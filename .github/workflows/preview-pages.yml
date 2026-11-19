@@ -1,0 +1,64 @@
+name: Publish Linux Nexus development preview
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/preview-pages.yml'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: linux-nexus-preview-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout development branch of source repository
+        uses: actions/checkout@v4
+        with:
+          repository: bm-ece/linux-nexus
+          ref: develop/multicourse-platform
+          path: source
+          persist-credentials: false
+
+      - name: Validate preview storage isolation
+        shell: bash
+        run: |
+          test -f source/index.html
+          test -f source/assets/ece-logo.jpg
+          test -f source/assets/favicon.svg
+          grep -q "linux_nexus_preview_complete_2026" source/index.html
+          grep -q "location.pathname.startsWith('/linux-nexus-preview/')" source/index.html
+          if grep -R -nE '(href|src)="/(assets|css|js|courses)/' source/index.html; then
+            echo "Root-relative assets are incompatible with the preview path"
+            exit 1
+          fi
+
+      - name: Record deployed source revision
+        shell: bash
+        run: |
+          git -C source rev-parse HEAD > source/PREVIEW_SOURCE_COMMIT.txt
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload preview files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: source
+
+      - name: Deploy preview to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
