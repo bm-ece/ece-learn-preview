@@ -1,6 +1,8 @@
 name: Publish Linux Nexus development preview
 
 on:
+  repository_dispatch:
+    types: [linux-nexus-development-push]
   workflow_dispatch:
   schedule:
     - cron: '*/15 * * * *'
