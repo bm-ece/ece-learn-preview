@@ -12,7 +12,7 @@
 <body>
   <header><div class="brand"><img src="assets/ece-logo.jpg" alt="Logo ECE" width="54" height="54"><div><h1>ECE Learn</h1><p>Votre espace d'apprentissage interactif</p></div></div></header>
   <main>
-    <section class="intro"><h2>Choisissez votre niveau</h2><p>Retrouvez les matières correspondant à votre année d'études.</p><label for="level">Votre niveau</label><select id="level"><option value="">Sélectionner un niveau</option><option value="ING1">ING1</option><option value="ING2">ING2</option><option value="ING3">ING3</option></select></section>
+    <section class="intro"><h2>Choisissez votre niveau</h2><p>Retrouvez les matières correspondant à votre année d'études.</p><div class="level-label" id="level-label">Votre niveau</div><div class="level-options" role="group" aria-labelledby="level-label"><button type="button" class="level-option" data-level="ING1" aria-pressed="false">ING1</button><button type="button" class="level-option" data-level="ING2" aria-pressed="false">ING2</button><button type="button" class="level-option" data-level="ING3" aria-pressed="false">ING3</button></div></section>
     <section aria-label="Matières correspondant au niveau"><h2 class="courses-title">Mes matières</h2><p id="course-message" role="status" aria-live="polite"></p><div class="courses" id="courses"></div></section>
   </main>
   <footer>ECE Learn · ECE Engineering School · <a href="https://www.ece.fr/" rel="noopener noreferrer" target="_blank">ece.fr</a></footer>
