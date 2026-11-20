@@ -93,7 +93,7 @@ migration et tests de non-régression.
 ## 5. Principes techniques
 
 1. JavaScript natif avec modules ES si compatibles avec GitHub Pages ; pas de framework ajouté sans nécessité démontrée.
-2. Chemins relatifs compatibles avec `/ece-learn/` et `/linux-nexus-preview/` (éviter les chemins racine `/assets/...`).
+2. Chemins relatifs compatibles avec `/ece-learn/` et `/ece-learn-preview/` (éviter les chemins racine `/assets/...`).
 3. Aucun appel réseau requis pour l'usage normal des fiches déjà chargées, sauf ressources statiques hébergées sur le même site.
 4. Contenu textuel échappé lors du rendu ; pas d'injection HTML provenant des données de cours.
 5. Identifiants de cours et de notions stables ; progression isolée par matière. Préserver les données de progression Linux pendant la migration ; la compatibilité des anciennes URL n'est pas requise.
@@ -118,7 +118,7 @@ GitHub Pages du dépôt existant risquerait de remplacer la production. Voir `do
 
 ## 8. URL officielles par matière
 
-**Convention B publiée :** portail https://bm-ece.github.io/ece-learn/ ; Linux https://bm-ece.github.io/ece-learn/linux/ ; fiche 12 `/ece-learn/linux/?view=learn&notion=12`. Preview : `/linux-nexus-preview/` et `/linux-nexus-preview/linux/`.
+**Convention B publiée :** portail https://bm-ece.github.io/ece-learn/ ; Linux https://bm-ece.github.io/ece-learn/linux/ ; fiche 12 `/ece-learn/linux/?view=learn&notion=12`. Preview : `/ece-learn-preview/` et `/ece-learn-preview/linux/`.
 
 Chaque matière dispose d'un point d'entrée statique `<cours>/index.html` et réutilise les services communs. La racine affiche uniquement le portail. Les anciennes URL pédagogiques de Linux Nexus ne sont pas garanties ; les identifiants de notions et la progression Linux ont été conservés.
 
