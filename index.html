@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>ECE Learn · Votre espace d'apprentissage interactif</title>
-  <meta name="description" content="ECE Learn : votre espace d'apprentissage interactif. Linux, Réseaux, Programmation et Cybersécurité.">
+  <meta name="description" content="ECE Learn : votre espace d'apprentissage interactif pour ING1, ING2 et ING3.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="css/portal.css">
 </head>
 <body>
   <header><div class="brand"><img src="assets/ece-logo.jpg" alt="Logo ECE" width="54" height="54"><div><h1>ECE Learn</h1><p>Votre espace d'apprentissage interactif</p></div></div></header>
   <main>
-    <section class="intro"><h2>Choisissez votre matière</h2><p>Des cours interactifs et des exercices pratiques pour apprendre à votre rythme. Commencez avec Linux ; d'autres matières viendront enrichir la plateforme.</p></section>
-    <section class="courses" id="courses" aria-label="Matières disponibles et à venir"></section>
+    <section class="intro"><h2>Choisissez votre niveau</h2><p>Retrouvez les matières correspondant à votre année d'études.</p><label for="level">Votre niveau</label><select id="level"><option value="">Sélectionner un niveau</option><option value="ING1">ING1</option><option value="ING2">ING2</option><option value="ING3">ING3</option></select></section>
+    <section aria-label="Matières correspondant au niveau"><h2 class="courses-title">Mes matières</h2><p id="course-message" role="status" aria-live="polite"></p><div class="courses" id="courses"></div></section>
   </main>
   <footer>ECE Learn · ECE Engineering School · <a href="https://www.ece.fr/" rel="noopener noreferrer" target="_blank">ece.fr</a></footer>
   <script src="js/catalog.js"></script>
