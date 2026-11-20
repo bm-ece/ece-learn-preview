@@ -1,0 +1,1090 @@
+.hero{
+  padding:clamp(23px,4vw,46px);
+  border:1px solid #2b5a78;
+  border-radius:23px;
+  background:linear-gradient(125deg,#102b49,#0d192c 70%);
+  position:relative;
+  overflow:hidden;
+  margin-bottom:22px}
+.hero:after{
+  content:'⌘';
+  position:absolute;
+  right:30px;
+  top:0;
+  font-size:210px;
+  line-height:1;
+  opacity:.045;
+  pointer-events:none}
+h1{
+  font-size:clamp(29px,3.4vw,51px);
+  letter-spacing:-.035em;
+  line-height:1.12;
+  margin:10px 0 18px}
+h2{
+  font-size:22px;
+  margin:27px 0 13px;
+  letter-spacing:-.02em}
+h3{
+  font-size:16px;
+  margin:8px 0 10px}
+p{
+  margin:8px 0 14px}
+.muted{
+  color:var(--muted)}
+.small{
+  font-size:12px}
+.eyebrow{
+  font-size:11px;
+  letter-spacing:.18em;
+  color:var(--cyan);
+  font-weight:800;
+  text-transform:uppercase}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+  gap:14px}
+.card{
+  background:linear-gradient(160deg,#14243a,#101b2d);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px;
+  min-width:0}
+.card:hover{
+  border-color:#3a6484}
+#cards>.card{
+  display:flex;
+  flex-direction:column}
+#cards>.card>.code{
+  margin-top:auto}
+#cards>.card>.actions{
+  flex-shrink:0}
+.lab-cards>.card{
+  display:flex;
+  flex-direction:column}
+.lab-cards>.card>p.small{
+  margin-top:auto}
+.lab-cards>.card>button{
+  align-self:flex-start}
+.card .big{
+  font-size:34px;
+  color:var(--cyan);
+  font-weight:800}
+.tag{
+  display:inline-block;
+  color:#8aeaf2;
+  background:#0c3348;
+  border:1px solid #256278;
+  border-radius:6px;
+  padding:3px 8px;
+  font-size:10px;
+  letter-spacing:.05em;
+  font-weight:800;
+  margin-bottom:8px}
+.tag.gold{
+  color:var(--gold);
+  background:#382b1e;
+  border-color:#705330}
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:16px}
+.code{
+  font:13px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;
+  background:#071323;
+  color:#a4f0e5;
+  padding:13px 15px;
+  border:1px solid #2c5267;
+  border-radius:10px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere}
+.terminal{
+  background:#050d17;
+  border:1px solid #36617b;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 20px 55px #0005}
+.termbar{
+  background:#13243a;
+  padding:10px 16px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color:#a8bfd6}
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#ff7e85}
+.dot:nth-child(2){
+  background:#ffc36d}
+.dot:nth-child(3){
+  background:#75e7b6}
+.termout{
+  height:350px;
+  overflow:auto;
+  padding:18px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  font:13px/1.6 ui-monospace,Consolas,monospace;
+  color:#c6e6ef}
+.termline{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0 16px 14px}
+.termline span{
+  white-space:nowrap;
+  font:12px ui-monospace;
+  color:var(--green)}
+.termline input{
+  border:none;
+  background:transparent;
+  padding:9px 0;
+  outline:none!important;
+  font:13px ui-monospace}
+.ok{
+  background:#102f29;
+  border:1px solid #286a59;
+  color:#b0f3d2;
+  border-radius:10px;
+  padding:13px;
+  margin:12px 0}
+.warn{
+  background:#392a1d;
+  border:1px solid #76532e;
+  color:#ffe2b2;
+  border-radius:10px;
+  padding:13px;
+  margin:12px 0}
+.bad{
+  background:#3b202d;
+  border:1px solid #78394b;
+  color:#ffb8c4;
+  border-radius:10px;
+  padding:13px;
+  margin:12px 0}
+.progress{
+  height:9px;
+  background:#23374d;
+  border-radius:99px;
+  overflow:hidden}
+.progress>div{
+  height:100%;
+  background:linear-gradient(90deg,#25bcd1,#7cebc0);
+  transition:width .3s}
+.split{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:16px}
+.lesson-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:15px 0}
+.lesson-tabs button{
+  font-size:12px}
+.choice{
+  display:block;
+  width:100%;
+  text-align:left;
+  margin:7px 0}
+.choice.selected{
+  border-color:var(--cyan);
+  background:#1a455d}
+ul{
+  padding-left:22px}
+.scroll{
+  overflow:auto}
+table{
+  border-collapse:collapse;
+  width:100%;
+  font-size:13px}
+th,td{
+  padding:10px 12px;
+  border-bottom:1px solid var(--line);
+  text-align:left}
+th{
+  color:var(--cyan)}
+.pill{
+  display:inline-block;
+  border-radius:99px;
+  background:#193d50;
+  color:#9aebf0;
+  padding:3px 10px;
+  font-size:11px}
+.labstep{
+  display:flex;
+  gap:12px;
+  margin:10px 0;
+  align-items:flex-start}
+.labstep b{
+  background:#174461;
+  color:var(--cyan);
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  flex:none}
+.meter{
+  height:13px;
+  background:#1c3146;
+  border-radius:20px;
+  overflow:hidden}
+.meter div{
+  height:100%;
+  background:linear-gradient(90deg,#2587d2,#64e2bc)}
+.hint{
+  border-left:3px solid #c9a059;
+  padding:10px 15px;
+  background:#30291d;
+  color:#e9d5ad;
+  margin:12px 0}
+.iconbox{
+  font-size:28px;
+  margin-bottom:10px}
+.footer{
+  width:100%;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  background:#10383e;
+  color:#c5e6e8;
+  border-top:1px solid #31616a;
+  padding:10px clamp(18px,4vw,62px);
+  font-size:12px;
+  line-height:1.5}
+.footer-content{
+  max-width:1600px;
+  width:100%;
+  margin:0 auto;
+  text-align:center}
+@media(max-width:900px){
+  .shell{
+    grid-template-columns:1fr}
+  .sidebar{
+    height:auto;
+    position:relative;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+    padding:10px 15px}
+  .logo{
+    padding:4px 8px 10px}
+  .navwrap{
+    display:flex;
+    overflow:auto;
+    gap:5px}
+  .nav{
+    width:auto;
+    white-space:nowrap}
+  .side-label,.domainnav{
+    display:none}
+  .main{
+    padding:20px}
+  .split{
+    grid-template-columns:1fr}
+  }
+@media(max-width:480px){
+  .termline span{
+    font-size:10px}
+  .hero{
+    padding:22px}
+  .termout{
+    height:280px}
+  }
+
+
+/* V2: parcours pédagogique visuel, inspiré des principes de l’Atelier Git. */
+.path-track{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:12px;
+  margin:18px 0 25px}
+
+.path-step{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  background:linear-gradient(150deg,#142940,#0d1b30);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:17px;
+  min-width:0}
+
+.path-step:before{
+  content:"";
+  display:block;
+  width:16px;
+  height:16px;
+  border:3px solid var(--cyan);
+  border-radius:50%;
+  background:#0d1b30;
+  margin-bottom:12px}
+
+.path-step.complete:before{
+  background:var(--green);
+  border-color:var(--green)}
+
+.path-step.partial:before{
+  background:linear-gradient(90deg,var(--green) 50%,#0d1b30 50%)}
+
+.path-step h3{
+  margin:4px 0 7px}
+.path-step p{
+  font-size:12px;
+  color:var(--muted);
+  margin:0 0 12px}
+
+.path-step .progress{
+  margin:8px 0 12px}
+.path-step button{
+  width:100%;
+  font-size:12px;
+  padding:8px}
+
+.path-step > .tag{
+  align-self:flex-start}
+
+.path-step .path-status{
+  position:absolute;
+  top:12px;
+  right:12px;
+  max-width:calc(100% - 66px);
+  padding:3px 8px;
+  border-radius:999px;
+  background:#36545e;
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  line-height:1.25;
+  text-align:center}
+
+.path-step .path-bottom{
+  margin-top:auto;
+  padding-top:12px}
+
+.path-step .path-notions{
+  margin-bottom:6px}
+
+.path-step .path-lab{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:6px;
+  text-align:left;
+  background:transparent;
+  border:1px solid var(--line);
+  margin:0 0 10px;
+  color:var(--fg)}
+
+.path-step .path-lab:hover,.path-step .path-lab:focus-visible{
+  border-color:var(--cyan);
+  background:var(--p2)}
+
+
+.path-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:25px}
+
+.path-head h2{
+  margin:0}
+.path-count{
+  font-size:12px;
+  color:var(--muted)}
+
+@media(max-width:650px){
+  .path-track{
+    grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}
+  }
+
+
+/* ECE visual identity — teal from supplied school logo; accessible dark academic interface. */
+:root{
+  --bg:#06191d;
+  --p:#0b262b;
+  --p2:#11333a;
+  --line:#28565b;
+  --fg:#f3fbfb;
+  --muted:#b5d0d0;
+  --cyan:#5ce5db;
+  --green:#8ee9bd;
+  --gold:#ffd38d;
+  --red:#ff9eaa}
+
+body{
+  background:radial-gradient(ellipse at 85% -8%,#0d5c61 0%,transparent 45%),radial-gradient(ellipse at 0% 105%,#073b40 0%,transparent 36%),var(--bg)}
+
+.sidebar{
+  background:linear-gradient(180deg,#06282d,#071d22 85%);
+  border-right-color:#28565b}
+
+.logo{
+  gap:12px;
+  letter-spacing:.025em;
+  font-size:18px;
+  line-height:1.25}
+
+.ece-logo{
+  width:58px;
+  height:58px;
+  object-fit:cover;
+  border:1px solid #367d7d;
+  border-radius:12px;
+  flex:none;
+  box-shadow:0 0 24px #37c7ba20}
+
+.logo small{
+  color:#8fece4;
+  letter-spacing:.10em;
+  font-size:9px;
+  margin-top:4px}
+
+button{
+  background:#16434a;
+  border-color:#397079}
+
+button:hover{
+  background:#20545a;
+  border-color:var(--cyan)}
+
+button.primary{
+  background:linear-gradient(125deg,#087b80,#0b5963);
+  border-color:#5bd6cb;
+  color:#fff}
+
+input,textarea,select{
+  background:#081e23}
+
+.nav.on{
+  background:#125057;
+  border-color:#2c8d8e}
+
+.side-label{
+  color:#9dbfc0}
+
+.hero{
+  border-color:#2b797a;
+  background:linear-gradient(120deg,#103b42,#0a232b 72%);
+  box-shadow:inset 0 1px #8ff6e50c}
+
+.hero:after{
+  content:'⌘';
+  opacity:.035}
+
+.card{
+  background:linear-gradient(160deg,#103239,#0a242a);
+  border-color:#2a555b}
+
+.card:hover{
+  border-color:#46928f}
+
+.tag{
+  background:#0a4146;
+  border-color:#2e8784;
+  color:#9cf5eb}
+
+.tag.gold{
+  background:#3a3020;
+  border-color:#79613c}
+
+.code{
+  background:#061c22;
+  border-color:#2b5b60;
+  color:#b0f4e9}
+
+.terminal{
+  background:#041417;
+  border-color:#397c7b}
+
+.termbar{
+  background:#0d343a;
+  color:#b5d6d5}
+
+.termout{
+  color:#d0f2ec}
+
+.progress{
+  background:#164148}
+
+.progress>div,.meter div{
+  background:linear-gradient(90deg,#1ca6a9,#85e8bd)}
+
+.path-step{
+  background:linear-gradient(150deg,#12373d,#0a252b)}
+
+.path-step:before{
+  background:#0a252b}
+
+.path-step.partial:before{
+  background:linear-gradient(90deg,var(--green) 50%,#0a252b 50%)}
+
+.choice.selected{
+  background:#14545a}
+
+.pill{
+  background:#145057;
+  color:#b1f3eb}
+
+.hint{
+  background:#302d22;
+  border-left-color:#d9ae69;
+  color:#f3deb6}
+
+.ok{
+  background:#103c31}
+
+.warn{
+  background:#392d20}
+
+.bad{
+  background:#3b202d}
+
+.footer{
+  color:#a5c2c2}
+
+@media(max-width:900px){
+  .sidebar{
+    border-bottom-color:var(--line)}
+  }
+
+@media(max-width:480px){
+  .ece-logo{
+    width:46px;
+    height:46px}
+  .logo{
+    font-size:16px}
+  }
+
+
+/* Mobile layout hardening: prevent oversized content from forcing desktop-width viewport. */
+html{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden}
+
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden}
+
+.shell{
+  width:100%;
+  max-width:100%;
+  min-width:0}
+
+.sidebar,.main,#app,.top,.hero,.card,.split,.grid,.path-track{
+  min-width:0;
+  max-width:100%}
+
+.top .eyebrow{
+  overflow-wrap:anywhere}
+
+.hero h1,.hero p,.card h2,.card h3{
+  overflow-wrap:anywhere}
+
+.logo>div{
+  min-width:0}
+
+.ece-mark{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#005057;
+  border:1px solid #4baba7;
+  color:#fff}
+
+.ece-mark svg{
+  width:36px;
+  height:31px;
+  display:block;
+  flex:none}
+
+.ece-mark b{
+  font-size:14px;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-.04em}
+
+@media(max-width:900px){
+  
+ .sidebar-inner{
+    position:static;
+    max-height:none;
+    overflow:visible;
+    padding:10px 15px}
+  
+ .shell{
+    display:block;
+    width:100%;
+    min-width:0}
+  
+ .sidebar{
+    width:100%;
+    max-width:100%;
+    height:auto;
+    overflow:hidden;
+    position:relative}
+  
+ .navwrap{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin}
+  
+ .navwrap .nav{
+    flex:0 0 auto}
+  
+ .main{
+    width:100%;
+    max-width:100%;
+    padding:18px 16px 48px}
+  
+ .top{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px}
+  
+ .top .eyebrow{
+    font-size:10px;
+    letter-spacing:.10em}
+  
+ .status{
+    max-width:100%;
+    white-space:normal;
+    overflow-wrap:anywhere}
+  
+ .hero{
+    padding:24px 20px}
+  
+ .hero h1{
+    font-size:clamp(26px,8vw,42px)}
+  
+ .split{
+    grid-template-columns:minmax(0,1fr)}
+  
+ .grid,.path-track{
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+  
+ .code,.termout{
+    max-width:100%;
+    overflow-wrap:anywhere}
+  
+ .scroll{
+    max-width:100%;
+    overflow-x:auto}
+  
+}
+
+@media(max-width:480px){
+  
+ .logo{
+    font-size:17px;
+    gap:10px}
+  
+ .ece-mark{
+    width:48px;
+    height:48px;
+    min-width:48px}
+  
+ .ece-mark svg{
+    width:29px;
+    height:26px}
+  
+ .ece-mark b{
+    font-size:12px}
+  
+ .logo small{
+    font-size:9px;
+    letter-spacing:.04em}
+  
+ .hero{
+    padding:20px 16px}
+  
+ .hero h1{
+    font-size:clamp(25px,8vw,34px)}
+  
+ .card{
+    padding:16px}
+  
+ .grid,.path-track{
+    grid-template-columns:minmax(0,1fr)}
+  
+ .actions button{
+    max-width:100%;
+    white-space:normal}
+  
+ .termline{
+    min-width:0}
+  
+ .termline input{
+    min-width:0}
+  
+}
+
+.ece-official-logo{
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  background:#005057;
+  border-radius:12px;
+  overflow:hidden}
+.ece-official-logo:hover{
+  filter:brightness(1.08)}
+
+
+/* Cadrage du logo uniquement : agrandir le visuel officiel sans changer le favicon ni le reste du site. */
+.ece-logo-frame{
+  display:block;
+  position:relative;
+  flex:none;
+  width:58px;
+  height:58px;
+  overflow:hidden;
+  border:1px solid #367d7d;
+  border-radius:12px;
+  background:#005057;
+  box-shadow:0 0 24px #37c7ba20}
+
+.ece-logo-frame .ece-official-logo{
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  transform:scale(1.38);
+  transform-origin:center center}
+
+@media(max-width:480px){
+  .ece-logo-frame{
+    width:48px;
+    height:48px}
+  .ece-logo-frame .ece-official-logo{
+    width:100%;
+    height:100%}
+  }
+
+
+/* Point de vigilance : repère pédagogique distinct, accessible et sobre. */
+.vigilance{
+  margin-top:16px;
+  padding:16px 17px;
+  border:1px solid rgba(240,185,86,.45);
+  border-left:4px solid #e8b45d;
+  border-radius:10px;
+  background:linear-gradient(115deg,rgba(111,76,25,.23),rgba(34,39,43,.14));
+  }
+
+.vigilance-title{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin:0 0 8px;
+  color:#f6ce88;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.015em;
+  }
+
+.vigilance-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 23px;
+  width:23px;
+  height:23px;
+  border-radius:7px;
+  background:rgba(232,180,93,.17);
+  color:#f6ce88;
+  font-size:15px;
+  }
+
+.vigilance p{
+  margin:0;
+  color:#f4e8d6;
+  line-height:1.65;
+  overflow-wrap:anywhere;
+  }
+
+
+/* Desktop: the document scrolls through the content and full-width footer.
+   The sidebar keeps its own sticky, independently scrollable navigation. */
+@media(min-width:901px){
+  
+ html,body{
+    height:100%;
+    overflow:hidden}
+  
+ .shell{
+    height:100vh;
+    height:100dvh;
+    min-height:0;
+    overflow:hidden}
+  
+ .sidebar{
+    position:relative;
+    align-self:stretch;
+    height:100%;
+    min-height:0;
+    overflow:hidden}
+  
+ .sidebar-inner{
+    position:static;
+    height:100%;
+    max-height:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior-y:contain;
+    padding:22px 14px 28px}
+  
+ .main{
+    height:100%;
+    min-height:0;
+    max-width:none;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior-y:contain}
+  
+ body{
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    height:100dvh}
+  
+ .shell{
+    flex:1 1 auto;
+    height:auto;
+    min-height:0}
+  
+ body>.footer{
+    display:none;
+    flex:0 0 auto}
+  
+ body.footer-at-end>.footer{
+    display:flex}
+  
+}
+
+
+/* Compact ECE brand in the fixed-width desktop sidebar; preserve the official logo size. */
+@media(min-width:901px){
+  
+ .sidebar .logo{
+    gap:6px;
+    padding-left:2px;
+    padding-right:2px;
+    font-size:18px;
+    letter-spacing:0;
+    line-height:1.2}
+  
+ .sidebar .ece-brand-text{
+    min-width:0;
+    white-space:nowrap}
+  
+ .sidebar .logo small{
+    font-size:10px;
+    letter-spacing:0;
+    line-height:1.35;
+    margin-top:5px;
+    white-space:nowrap}
+  
+}
+
+
+/* ECE learning-domain navigation: compact, legible cards in the existing sidebar. */
+.domainnav#domains{
+  display:grid;
+  gap:7px;
+  padding:0 5px 18px}
+
+.domain-card{
+  width:100%;
+  display:grid;
+  grid-template-columns:28px minmax(0,1fr) 17px;
+  align-items:center;
+  gap:7px;
+  min-height:57px;
+  padding:9px 7px;
+  text-align:left;
+  background:#0b292e;
+  border:1px solid #194349;
+  border-radius:10px;
+  color:#e9faf8;
+  font:inherit;
+  cursor:pointer;
+  transition:background .15s,border-color .15s}
+
+.domain-card:hover,.domain-card:focus-visible{
+  background:#17454b;
+  border-color:#418c89;
+  outline-offset:2px}
+
+.domain-card.on{
+  background:#16464b;
+  border-color:#54b6ae;
+  box-shadow:inset 3px 0 #63dfd2}
+
+.domain-number{
+  display:grid;
+  place-items:center;
+  min-height:29px;
+  background:#17454b;
+  border-radius:7px;
+  color:#8be8dd;
+  font-size:12px;
+  font-weight:800}
+
+.domain-title{
+  min-width:0;
+  overflow-wrap:break-word;
+  font-size:12px;
+  line-height:1.45;
+  font-weight:600}
+
+.domain-symbol{
+  justify-self:end;
+  color:#78cfc7;
+  font-size:13px;
+  white-space:nowrap}
+
+@media(max-width:900px){
+  .domainnav#domains{
+    display:none}
+  }
+
+
+/* Position in the 79-lesson sequence, distinct from validated learning progress. */
+.lesson-position{
+  max-width:360px;
+  margin-top:16px;
+  font-size:12px;
+  color:var(--muted)}
+
+.lesson-position-track{
+  height:5px;
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(117,210,203,.16);
+  margin-top:7px}
+
+.lesson-position-track span{
+  display:block;
+  height:100%;
+  background:#5bd8ca;
+  border-radius:inherit}
+
+.lesson-actions button:disabled{
+  opacity:.42;
+  cursor:not-allowed}
+
+.lesson-end{
+  align-self:center;
+  font-size:12px;
+  font-weight:700;
+  color:#78dacc}
+
+
+/* Compact ECE progress indicators: actual validations, completed labs and XP. */
+.status{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex-wrap:wrap;
+  background:rgba(7,40,44,.65);
+  border-color:rgba(87,190,181,.32);
+  color:#d0e9e6;
+  font-size:12px;
+  line-height:1.4}
+
+.status-item{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  white-space:nowrap}
+
+.status-value{
+  font-weight:800;
+  color:#83e5d9;
+  font-variant-numeric:tabular-nums}
+
+.status-divider{
+  height:14px;
+  width:1px;
+  background:rgba(120,210,201,.3)}
+
+.status-xp .status-value{
+  color:#f1ca80}
+
+@media(max-width:600px){
+  .status{
+    gap:6px 9px;
+    padding:8px 11px}
+  .status-divider{
+    display:none}
+  .status-item{
+    font-size:11px}
+  }
+
+
+/* Official ECE website links: logo and discreet footer text. */
+.ece-site-link{
+  cursor:pointer;
+  text-decoration:none}
+
+.ece-site-link:hover{
+  border-color:#6ee1d5;
+  box-shadow:0 0 0 2px rgba(110,225,213,.18),0 0 24px #37c7ba20}
+
+.ece-site-link:focus-visible,.ece-footer-link:focus-visible{
+  outline:2px solid #8fece4;
+  outline-offset:3px}
+
+.ece-footer-link{
+  color:#86e2d8;
+  text-decoration:underline;
+  text-decoration-color:rgba(134,226,216,.45);
+  text-underline-offset:3px;
+  white-space:nowrap}
+
+.ece-footer-link:hover{
+  color:#ffffff;
+  text-decoration-color:currentColor}
+
+.ece-footer-separator{
+  margin:0 5px;
+  color:#7faeaa}
+
+
+/* Optional activities stay below 05 Retenir in the right column. */
+.further-learning{
+  padding:17px 19px}
+
+.further-learning h3{
+  margin:0 0 7px;
+  font-size:15px}
+
+.further-learning .muted{
+  margin:0 0 11px}
+
+.further-learning .actions{
+  margin-top:0;
+  gap:8px}
+
+.further-learning .actions button{
+  font-size:12px;
+  padding:9px 11px}
+
+
+/* Lien de retour au portail multi-matières, sans modifier la navigation Linux. */
+.back-to-portal{display:block;margin:0 9px 20px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;color:var(--cyan);font-size:13px;font-weight:650;text-decoration:none}.back-to-portal:hover{background:var(--p2);border-color:var(--cyan)}.back-to-portal:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
