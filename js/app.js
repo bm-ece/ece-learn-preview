@@ -3,12 +3,7 @@ const DATA=window.LINUX_NEXUS_DATA;
 if(!DATA || !Array.isArray(DATA.commands) || !Array.isArray(DATA.parts)) throw new Error('Linux teaching data failed to load');
 const COMMANDS=DATA.commands, PARTS=DATA.parts;
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const isPreview=location.pathname.startsWith('/linux-nexus-preview/');
-const store=isPreview?'linux_nexus_preview_complete_2026':'linux_nexus_complete_2026';
-let persisted={};
-try {
-  persisted=JSON.parse(localStorage.getItem(store)||'{}');
-} catch {}
+const persisted=window.ECE_STORAGE.load();
 const state={
   view:'home',
   active:0,
@@ -48,15 +43,13 @@ if(persisted.fs && typeof persisted.fs==='object' && !Array.isArray(persisted.fs
 }
 state.fs=JSON.parse(JSON.stringify(persisted.fs||initialFS));
 function save() {
-  try {
-    localStorage.setItem(store, JSON.stringify({
-      done: [...state.done],
-      labDone: [...state.labDone],
-      labStarted: [...state.labStarted],
-      attempts: state.attempts,
-      fs: state.fs
-    }));
-  } catch {}
+  window.ECE_STORAGE.save({
+    done: [...state.done],
+    labDone: [...state.labDone],
+    labStarted: [...state.labStarted],
+    attempts: state.attempts,
+    fs: state.fs
+  });
   const n = state.done.size;
   document.getElementById('status').innerHTML = `<span class="status-item"><span class="status-value">${n}/${COMMANDS.length}</span> notions validées</span>` +
     `<span class="status-divider" aria-hidden="true"></span>` +
