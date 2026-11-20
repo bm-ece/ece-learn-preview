@@ -7,7 +7,7 @@
 - Dépôt officiel : `bm-ece/ece-learn`, branche `main`.
 - Site officiel : https://bm-ece.github.io/ece-learn/ ; Linux : https://bm-ece.github.io/ece-learn/linux/.
 - Développement : `develop/multicourse-platform`.
-- Preview : `bm-ece/linux-nexus-preview/main`.
+- Preview : `bm-ece/ece-learn-preview/main`.
 - Sauvegarde pré-migration : `backup/linux-nexus-production-2026-11-20` (`c0add686`).
 
 ## Application et contenus
