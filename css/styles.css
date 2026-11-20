@@ -1262,3 +1262,6 @@ body{
   font-size:12px;
   padding:9px 11px}
 
+
+/* Lien de retour au portail multi-matières, sans modifier la navigation Linux. */
+.back-to-portal{display:block;margin:0 9px 20px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;color:var(--cyan);font-size:13px;font-weight:650;text-decoration:none}.back-to-portal:hover{background:var(--p2);border-color:var(--cyan)}.back-to-portal:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
