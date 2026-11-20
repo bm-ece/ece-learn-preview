@@ -1,4 +1,4 @@
-window.LINUX_NEXUS_DATA={
+window.ECE_LINUX_DATA={
   "commands": [
     {
       "part": 0,
