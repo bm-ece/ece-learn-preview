@@ -4,7 +4,7 @@
 
 - **Production validée :** https://bm-ece.github.io/ece-learn/
 - **Linux production :** https://bm-ece.github.io/ece-learn/linux/
-- **Preview de référence :** https://bm-ece.github.io/linux-nexus-preview/
+- **Preview de référence :** https://bm-ece.github.io/ece-learn-preview/
 - **Référence graphique approuvée :** portail au commit `52354f55`.
 - **Version publiée :** fusion PR #62, commit `8dab5e78905b77b46bd29ec834be5164efc44fc2`.
 
