@@ -1,4 +1,4 @@
-window.LINUX_NEXUS_LABS=[
+window.ECE_LINUX_LABS=[
   {
     title: 'Enquête dans le système de fichiers',
     story: 'Tu arrives sur une machine inconnue. Repère la configuration des utilisateurs et inspecte les métadonnées du système.',
