@@ -14,7 +14,7 @@ function test(name, fn) {
 }
 function boot(saved = null) {
   const elements = new Map();
-  const storage = new Map(saved ? [['linux_nexus_complete_2026', JSON.stringify(saved)]] : []);
+  const storage = new Map(saved ? [['ece_learn_linux_progress_2026', JSON.stringify(saved)]] : []);
   const document = {
     getElementById(id) {
       if (!elements.has(id)) elements.set(id, { innerHTML: '', textContent: '', value: '', scrollTop: 0, scrollHeight: 0, focus() {} });
@@ -22,7 +22,7 @@ function boot(saved = null) {
     },
     addEventListener() {}
   };
-  const location = new URL('https://bm-ece.github.io/linux-nexus/');
+  const location = new URL('https://bm-ece.github.io/ece-learn/');
   const history = { replaceState() {}, pushState() {} };
   const context = vm.createContext({ document, localStorage: { getItem: k => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v) }, window: { location, history, scrollTo() {}, addEventListener() {} }, URL, URLSearchParams, console });
   vm.runInContext(source + '\nthis.simulator = { execute, state, initialFS, LABS, COMMANDS, submitLab };', context, { timeout: 5000 });
@@ -64,7 +64,7 @@ for (const [index, lab] of sim.LABS.entries()) {
     }
   });
 }
-test('migration retains saved files and progress', () => {
+test('restoration retains saved files and progress', () => {
   const migrated = boot({ done: [1, 4], labDone: [2], attempts: { 1: 3 },
     fs: { '/': { dir: true }, '/home': { dir: true }, '/home/alex': { dir: true },
       '/home/alex/notes.txt': { text: 'alex /home/alex' } } });
@@ -72,7 +72,7 @@ test('migration retains saved files and progress', () => {
   assert.equal(migrated.state.done.size, 2); assert.equal(migrated.state.labDone.size, 1);
   assert.equal(migrated.state.attempts[1], 3);
 });
-test('migration is idempotent', () => {
+test('restoration is idempotent', () => {
   const already = boot({ fs: { '/': { dir: true }, '/home': { dir: true },
     '/home/student': { dir: true }, '/home/student/a.txt': { text: 'saved' } } });
   assert.equal(already.execute('cat /home/student/a.txt').out.trim(), 'saved');
