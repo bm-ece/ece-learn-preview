@@ -2,18 +2,21 @@
 (function () {
   'use strict';
   const target = document.getElementById('courses');
-  const selector = document.getElementById('level');
+  const buttons = Array.from(document.querySelectorAll('[data-level]'));
   const message = document.getElementById('course-message');
   const catalog = window.ECE_CATALOG;
   const levels = ['ING1', 'ING2', 'ING3'];
   const storageKey = 'ece_learn_selected_level';
-  if (!target || !selector || !message || !Array.isArray(catalog)) throw new Error('Portail ECE Learn indisponible');
+  if (!target || buttons.length !== 3 || !message || !Array.isArray(catalog)) throw new Error('Portail ECE Learn indisponible');
   let saved = null;
   try { saved = localStorage.getItem(storageKey); } catch { /* stockage facultatif */ }
-  selector.value = levels.includes(saved) ? saved : '';
+  let selectedLevel = levels.includes(saved) ? saved : '';
+  function updateButtons() {
+    for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.level === selectedLevel));
+  }
   function render() {
     target.replaceChildren();
-    const level = selector.value;
+    const level = selectedLevel;
     if (!levels.includes(level)) {
       message.textContent = 'Sélectionnez votre niveau pour voir les matières correspondantes.';
       return;
@@ -32,9 +35,12 @@
       target.append(card);
     }
   }
-  selector.addEventListener('change', () => {
-    try { localStorage.setItem(storageKey, selector.value); } catch { /* stockage facultatif */ }
+  for (const button of buttons) button.addEventListener('click', () => {
+    selectedLevel = button.dataset.level;
+    try { localStorage.setItem(storageKey, selectedLevel); } catch { /* stockage facultatif */ }
+    updateButtons();
     render();
   });
+  updateButtons();
   render();
 })();
