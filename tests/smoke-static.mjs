@@ -50,7 +50,7 @@ check('Linux teaching dataset remains intact', () => {
   assert.ok(data.parts.every(part => part && typeof part === 'object'));
 });
 check('Preview progress key is distinct from production', () => {
-  assert.ok(storage.includes("location.pathname.startsWith('/linux-nexus-preview/')"));
+  assert.ok(storage.includes("location.pathname.startsWith('/ece-learn-preview/')") && storage.includes("location.pathname.startsWith('/linux-nexus-preview/')"));
   assert.ok(storage.includes("'linux_nexus_preview_complete_2026'"));
   assert.ok(storage.includes("'linux_nexus_complete_2026'"));
   assert.ok(app.includes('window.ECE_STORAGE.load()'));
@@ -67,10 +67,10 @@ check('Preview progress key is distinct from production', () => {
     runInNewContext(storage, context);
     return context.window.ECE_STORAGE;
   };
-  const prod = makeContext('/linux-nexus/linux/');
-  const preview = makeContext('/linux-nexus-preview/linux/');
+  const prod = makeContext('/ece-learn/linux/');
+  const preview = makeContext('/ece-learn-preview/linux/');\n  const legacyPreview = makeContext('/linux-nexus-preview/linux/');
   prod.save({ done: [1], labDone: [], labStarted: [], attempts: {}, fs: {} });
-  preview.save({ done: [2], labDone: [], labStarted: [], attempts: {}, fs: {} });
+  preview.save({ done: [2], labDone: [], labStarted: [], attempts: {}, fs: {} });\n  assert.deepEqual(Array.from(legacyPreview.load().done), [2], 'Legacy Preview URL uses the same isolated key');
   assert.deepEqual(Array.from(prod.load().done), [1]);
   assert.deepEqual(Array.from(preview.load().done), [2]);
   assert.ok(memory.has('linux_nexus_complete_2026'));
