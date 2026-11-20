@@ -1,63 +1,37 @@
-# Inventaire technique initial — Linux Nexus
+# Inventaire technique ECE Learn — état après migration
 
-## Périmètre inspecté
+**État constaté au 20 novembre 2026 :** migration Linux Nexus → ECE Learn terminée. Le présent inventaire décrit l'application publiée ; les extractions initiales depuis le HTML monolithique appartiennent à l'historique de la migration.
 
-- Branche source : `develop/multicourse-platform`.
-- Application statique sans framework, hébergée sur GitHub Pages.
-- Avant extraction : `index.html` contenait une unique balise `<style>` de **20 277 caractères**, ainsi qu'un
-  script JavaScript inline contenant les données pédagogiques et la logique interactive.
-- Les ressources utilisées directement par le HTML comprennent `assets/favicon.svg` et `assets/ece-logo.jpg`.
-- Le contenu Linux comprend **79 notions** regroupées en **7 domaines**, **7 laboratoires**, un terminal simulé, des simulateurs, des quiz et un suivi de progression.
+## Dépôt et publication
+
+- Dépôt officiel : `bm-ece/ece-learn`, branche `main`.
+- Site officiel : https://bm-ece.github.io/ece-learn/ ; Linux : https://bm-ece.github.io/ece-learn/linux/.
+- Développement : `develop/multicourse-platform`.
+- Preview : `bm-ece/linux-nexus-preview/main`.
+- Sauvegarde pré-migration : `backup/linux-nexus-production-2026-11-20` (`c0add686`).
+
+## Application et contenus
+
+- Application statique HTML/CSS/JavaScript, sans framework ni backend.
+- `index.html` : portail ; `linux/index.html` : entrée Linux et navigation profonde.
+- `js/catalog.js` : catalogue et niveaux ; `js/portal.js` : interface du portail.
+- `js/routing.js`, `js/storage.js`, `js/progress.js` : services Linux ; `js/app.js` : coordination.
+- `components/lesson.js`, `quiz.js`, `navigation.js` : composants pédagogiques.
+- `courses/linux/course.json` et `courses/linux/syllabus/syllabus.json` : métadonnées, 7 domaines, 14 séances, 79 notions.
+- `courses/linux/lessons/`, `labs/`, `simulators/`, `terminal/` : 79 fiches, 7 laboratoires et 28 commandes de référence, 4 simulateurs, shell et système de fichiers simulés ; atelier Bash.
+- `css/tokens.css`, `layout.css`, `components.css`, `styles.css` et `portal.css` : styles, compatibilité et portail.
 
 ## Persistance
 
-Une seule clé principale est utilisée par le script : `linux_nexus_complete_2026` en production. Les données
-incluent `done`, `labDone`, `labStarted`, `attempts` et `fs`. Sur le chemin `/linux-nexus-preview/`, le code
-utilise `linux_nexus_preview_complete_2026` pour éviter de modifier la progression de production sur l'origine
-commune `bm-ece.github.io`.
+La clé historique **`linux_nexus_complete_2026`** est conservée en production après renommage du dépôt. Elle contient notamment `done`, `labDone`, `labStarted`, `attempts`, `fs`. Preview utilise **`linux_nexus_preview_complete_2026`** ; le niveau choisi est mémorisé sous **`ece_learn_selected_level`**. Ces clés ne doivent pas être modifiées sans procédure de migration et tests.
 
-## Première extraction CSS
+## Contrôles réalisés
 
-- Fichier créé : `css/styles.css`, copie **exacte** du contenu de l'ancienne balise `<style>` (sans réécriture ni changement des règles).
-- `index.html` référence désormais `<link rel="stylesheet" href="css/styles.css">`.
-- Tout le reste du document HTML a été conservé à l'identique lors de cette extraction.
-- Les deux fichiers ont été copiés dans `bm-ece/linux-nexus-preview` sur sa branche `main` afin de déclencher la publication GitHub Pages classique.
+- Tests statiques, tests de navigation navigateur ordinateur/mobile, 79 fiches, quiz, missions, laboratoires, terminal, Bash et simulateurs.
+- Contrôle des chemins GitHub Pages `/ece-learn/` et `/ece-learn/linux/`, des liens profonds et de la persistance.
+- Parité des **38 fichiers hors workflows** entre développement et Preview vérifiée avant fusion.
+- Tests de production et déploiement Pages verts au commit `8dab5e78` ; validation utilisateur confirmée.
 
-## Contrôles et risques
+## Règles de maintenance
 
-- [x] Vérification structurelle : une seule balise `<style>` initiale et extraction exacte.
-- [x] Vérification structurelle : HTML inchangé hors remplacement de la balise CSS.
-- [x] Fichiers `css/styles.css` et `index.html` publiés dans le dépôt Preview.
-- [ ] Vérification visuelle sur PC et mobile (comparaison avec le site officiel).
-- [ ] Vérifier chargement réseau de `css/styles.css` et absence d'erreurs console.
-- [ ] Tester les 79 notions, les cinq cartes pédagogiques, les 7 laboratoires, le terminal, les simulateurs et la sauvegarde.
-- [ ] Relever les tests automatisés et workflows existants dans le dépôt source.
-- [ ] Préparer l'extraction progressive du JavaScript **après** validation visuelle.
-
-## Règles de migration
-
-Ne pas modifier le design, le logo, le favicon, la disposition en deux colonnes ou les fonctionnalités pendant les
-extractions techniques. Ne pas fusionner vers `main` du dépôt source sans accord explicite.
-
-## Deuxième extraction : JavaScript de l'application
-
-- Le script inline unique a été copié **à l'identique** vers `js/app.js` (**104 209 caractères**).
-- La balise `<script>` d'origine a été remplacée au même emplacement en fin de document par `<script src="js/app.js"></script>`.
-- Le script reste un **script classique**, sans `async`, `defer` ni `type="module"`, afin de conserver l'ordre d'exécution et le fonctionnement des déclarations globales.
-- Aucune fonction, donnée pédagogique, route ou clé de progression n'a été volontairement modifiée pendant cette extraction.
-- Les fichiers `js/app.js` et `index.html` ont été publiés sur `bm-ece/linux-nexus-preview/main`.
-- [ ] Vérifier le chargement HTTP de `js/app.js`, l'absence d'erreurs JavaScript et le fonctionnement interactif sur le site Preview.
-
-La séparation en modules plus petits sera entreprise **après** validation de cette étape.
-
-## Troisième extraction : données pédagogiques Linux
-
-- `js/data/linux.js` contient désormais la déclaration `const DATA` originale (**20 701 caractères**, sans modification des données).
-- `js/app.js` conserve les fonctions de l'application et commence par `const COMMANDS=DATA.commands, PARTS=DATA.parts`.
-- `index.html` charge les deux **scripts classiques synchrones**, dans cet ordre : `js/data/linux.js` puis
-  `js/app.js`. Les déclarations lexicales globales restent accessibles entre scripts classiques exécutés dans le
-  même environnement JavaScript.
-- Le site Preview a reçu les trois fichiers sur sa branche `main` ; aucun changement sur `main` du dépôt officiel.
-- [ ] Contrôle navigateur : chargement des deux scripts, navigation, notions, quiz, terminal, laboratoires, simulateurs et progression.
-
-La prochaine étape peut isoler les laboratoires ou les services de progression, après validation fonctionnelle de cette extraction.
+Conserver le rendu du portail validé au commit `52354f55`, les contenus et identifiants historiques, les clés de progression et les chemins relatifs. Utiliser développement → CI verte → synchronisation complète Preview → contrôle de parité → recette → autorisation de publication. La branche de sauvegarde protège le code de l'ancienne production ; elle ne contient pas les données navigateur.
