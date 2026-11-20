@@ -1,0 +1,23 @@
+{
+  "id": "linux",
+  "title": "Linux",
+  "description": "Linux, Bash et administration système",
+  "levels": [
+    "ING3"
+  ],
+  "entry": "linux/",
+  "status": "available",
+  "notionCount": 79,
+  "labCount": 7,
+  "contentSources": {
+    "notions": "courses/linux/lessons/data.js",
+    "labs": "courses/linux/labs/data.js",
+    "terminal": "courses/linux/terminal/fs.js",
+    "simulators": "courses/linux/simulators/index.js"
+  },
+  "note": "Metadonnees structurees et syllabus de reference ; catalogue actif js/catalog.js. Identifiants et progression Linux preserves.",
+  "syllabus": "courses/linux/syllabus/syllabus.json",
+  "domainCount": 7,
+  "sessionCount": 14,
+  "lessonOrder": "1-79"
+}
