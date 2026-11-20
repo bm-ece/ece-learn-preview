@@ -50,12 +50,12 @@ function save() {
     attempts: state.attempts,
     fs: state.fs
   });
-  const n = state.done.size;
+  const n = window.ECE_PROGRESS.summary(state, COMMANDS.length).notions;
   document.getElementById('status').innerHTML = `<span class="status-item"><span class="status-value">${n}/${COMMANDS.length}</span> notions validées</span>` +
     `<span class="status-divider" aria-hidden="true"></span>` +
     `<span class="status-item"><span class="status-value">${state.labDone.size}/7</span> labs réussis</span>` +
     `<span class="status-divider" aria-hidden="true"></span>` +
-    `<span class="status-item status-xp"><span class="status-value">${n*25+state.labDone.size*150}</span> XP</span>`;
+    `<span class="status-item status-xp"><span class="status-value">${window.ECE_PROGRESS.summary(state, COMMANDS.length).xp}</span> XP</span>`;
 }
 const NAV=[
   ['home','⌂','Accueil'],
@@ -977,12 +977,12 @@ function runScript(){
   render()
 }
 function progressView(){
-  let counts=PARTS.map((p,i)=>[p,COMMANDS.filter(c=>c.part===i).length,COMMANDS.filter((c,j)=>c.part===i&&state.done.has(j)).length]);
+  let counts=window.ECE_PROGRESS.byDomain(PARTS, COMMANDS, state.done);
   return `<div class="hero"><div class="eyebrow">MON PARCOURS</div><h1>Apprendre à ton rythme.</h1>` +
     `<p class="muted">Progression enregistrée localement sur cet appareil. Tu peux exporter ton bilan, mais ce navigateur n'envoie aucune note à un serveur.</p>` +
     `<div class="grid"><div class="card"><div class="big">${state.done.size}/${COMMANDS.length}</div><p>Notions travaillées</p></div>` +
     `<div class="card"><div class="big">${state.labDone.size}/7</div><p>Laboratoires terminés</p></div>` +
-    `<div class="card"><div class="big">${state.done.size*25+state.labDone.size*150}</div><p>Points d'expérience</p></div></div></div>` +
+    `<div class="card"><div class="big">${window.ECE_PROGRESS.summary(state, COMMANDS.length).xp}</div><p>Points d'expérience</p></div></div></div>` +
     `<div class="card"><h2>Progression par domaine</h2>${counts.map(([p,total,n],i)=>`<p><strong>P${i+1} · ${esc(p.title)}</strong><span style="float:right">${n}/${total}</span></p>` +
     `<div class="progress"><div style="width:${n/total*100}%"></div></div>`).join('')}<div class="actions"><button data-exportprogress="1">Exporter mon bilan JSON</button><button data-resetprogress="1">Réinitialiser la progression</button></div></div>`
 }
@@ -1039,7 +1039,7 @@ document.addEventListener('click',e=>{
   else if(d.script)runScript();
   else if(d.preset){state.scriptSource=d.preset==='backup'?'#!/usr/bin/env bash\n# Démonstration de sauvegarde\nSOURCE=/home/student\necho "Sauvegarde de $SOURCE"\nfor f in notes logs docs; do\n  echo "Copie de $f"\ndone\necho "Terminé"':'#!/usr/bin/env bash\n# Monitoring pédagogique\necho "Rapport de supervision"\nfree -h\nuptime\necho "Analyse terminée"';render()}
   else if(d.export)download('script_linux_nexus.sh',$('script').value);
-  else if(d.exportprogress)download('bilan_linux_nexus.json',JSON.stringify({date:new Date().toISOString(),notions:[...state.done].map(i=>COMMANDS[i].name),laboratoires:[...state.labDone].map(i=>LABS[i].title),xp:state.done.size*25+state.labDone.size*150},null,2),'application/json');
+  else if(d.exportprogress)download('bilan_linux_nexus.json',JSON.stringify({date:new Date().toISOString(),notions:[...state.done].map(i=>COMMANDS[i].name),laboratoires:[...state.labDone].map(i=>LABS[i].title),xp:window.ECE_PROGRESS.summary(state, COMMANDS.length).xp},null,2),'application/json');
   else if(d.resetprogress){
     if(confirm('Effacer les validations et points ?')){
       state.done.clear();
