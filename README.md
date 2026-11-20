@@ -8,7 +8,7 @@ ECE Learn est la plateforme pédagogique ECE multi-matières, publiée sur GitHu
 
 - **Production :** https://bm-ece.github.io/ece-learn/ — dépôt `bm-ece/ece-learn`, branche `main`.
 - **Cours Linux :** https://bm-ece.github.io/ece-learn/linux/.
-- **Preview :** https://bm-ece.github.io/linux-nexus-preview/ — dépôt indépendant `bm-ece/linux-nexus-preview`, branche `main`.
+- **Preview :** https://bm-ece.github.io/ece-learn-preview/ — dépôt indépendant `bm-ece/ece-learn-preview`, branche `main`.
 - **Développement :** branche `develop/multicourse-platform` du dépôt `bm-ece/ece-learn`.
 - **Sauvegarde pré-migration :** branche `backup/linux-nexus-production-2026-11-20`, commit `c0add686f4f907b153b20eceb6d5857c77bc2d3e`.
 
