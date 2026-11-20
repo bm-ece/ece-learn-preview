@@ -18,6 +18,29 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify byte-for-byte parity with validated development branch
+        run: |
+          git fetch --no-tags --depth=1 https://github.com/bm-ece/linux-nexus.git refs/heads/develop/multicourse-platform
+          node <<'NODE'
+          const {execFileSync}=require('node:child_process');
+          function files(ref) {
+            const output=execFileSync('git',['ls-tree','-r','--full-tree',ref],{encoding:'utf8'});
+            return new Map(output.trim().split('\n').filter(Boolean).map(line=>{
+              const match=/^\d+ blob ([a-f0-9]+)\t(.+)$/.exec(line);
+              if (!match) throw new Error('Unexpected git tree line: '+line);
+              return [match[2],match[1]];
+            }).filter(([path])=>!path.startsWith('.github/workflows/')));
+          }
+          const source=files('FETCH_HEAD'), preview=files('HEAD');
+          const paths=[...new Set([...source.keys(),...preview.keys()])].sort();
+          const diff=paths.filter(path=>source.get(path)!==preview.get(path));
+          if (diff.length) {
+            console.error('Preview differs from development (excluding workflows):');
+            for(const path of diff) console.error(' - '+path);
+            process.exit(1);
+          }
+          console.log('Parity OK: '+paths.length+' identical files (excluding workflows)');
+          NODE
       - name: Validate static site and JavaScript
         run: node tests/smoke-static.mjs
       - name: Install Chromium browser test dependencies
