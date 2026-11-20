@@ -9,7 +9,7 @@ const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css
 const server = createServer(async (req, res) => {
   try {
     const path = decodeURIComponent(new URL(req.url, 'http://localhost').pathname)
-      .replace(/^\/(?:linux-nexus-preview|ece-learn)\//, '/');
+      .replace(/^\/(?:ece-learn-preview|linux-nexus-preview|ece-learn)\//, '/');
     const file = resolve(root, '.' + (path.endsWith('/') ? path + 'index.html' : path));
     if (file !== root && !file.startsWith(root + sep)) throw Error('Invalid path');
     const ext = file.slice(file.lastIndexOf('.'));
