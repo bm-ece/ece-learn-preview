@@ -1,0 +1,458 @@
+{
+  "courseId": "linux",
+  "level": "ING3",
+  "notionCount": 79,
+  "labCount": 7,
+  "orderPolicy": "Indices historiques 1–79 conservés pour les URL et la progression",
+  "domains": [
+    {
+      "id": 1,
+      "title": "Fondamentaux et architecture Linux",
+      "notions": [
+        {
+          "id": 1,
+          "title": "pwd"
+        },
+        {
+          "id": 2,
+          "title": "ls"
+        },
+        {
+          "id": 3,
+          "title": "cd"
+        },
+        {
+          "id": 4,
+          "title": "cp"
+        },
+        {
+          "id": 5,
+          "title": "mv"
+        },
+        {
+          "id": 6,
+          "title": "rm"
+        },
+        {
+          "id": 7,
+          "title": "mkdir"
+        },
+        {
+          "id": 8,
+          "title": "touch"
+        },
+        {
+          "id": 9,
+          "title": "cat"
+        },
+        {
+          "id": 10,
+          "title": "file"
+        },
+        {
+          "id": 11,
+          "title": "stat"
+        },
+        {
+          "id": 12,
+          "title": "du"
+        },
+        {
+          "id": 13,
+          "title": "df"
+        },
+        {
+          "id": 14,
+          "title": "man"
+        },
+        {
+          "id": 15,
+          "title": "--help"
+        }
+      ],
+      "sessions": [
+        {
+          "number": 1,
+          "title": "Architecture & environnement système",
+          "practicalWork": "Activité Exploration guidée de l'arborescence système, identification des répertoires clés et de leur rôle"
+        },
+        {
+          "number": 2,
+          "title": "Commandes fondamentales & documentation",
+          "practicalWork": "TP Mini-enquête système : localiser, décrire et analyser des fichiers de configuration réels à partir d'indices fournis"
+        }
+      ],
+      "lab": 1
+    },
+    {
+      "id": 2,
+      "title": "Commandes avancées et traitement de données",
+      "notions": [
+        {
+          "id": 16,
+          "title": "grep"
+        },
+        {
+          "id": 17,
+          "title": "cut"
+        },
+        {
+          "id": 18,
+          "title": "sort"
+        },
+        {
+          "id": 19,
+          "title": "uniq"
+        },
+        {
+          "id": 20,
+          "title": "wc"
+        },
+        {
+          "id": 21,
+          "title": "awk"
+        },
+        {
+          "id": 22,
+          "title": "sed"
+        },
+        {
+          "id": 23,
+          "title": "tee"
+        },
+        {
+          "id": 24,
+          "title": "xargs"
+        },
+        {
+          "id": 25,
+          "title": "pipe |"
+        },
+        {
+          "id": 26,
+          "title": "redirection >"
+        },
+        {
+          "id": 27,
+          "title": "redirection >>"
+        },
+        {
+          "id": 28,
+          "title": "redirection 2>"
+        }
+      ],
+      "sessions": [
+        {
+          "number": 1,
+          "title": "Flux, pipes & outils Unix classiques",
+          "practicalWork": "Activité Extraction et comptage de données depuis un fichier texte structuré (journal, CSV, liste)"
+        },
+        {
+          "number": 2,
+          "title": "awk, sed & pipelines complexes",
+          "practicalWork": "TP Challenge pipeline : extraire des statistiques d'un journal d'accès web au format Combined Log Format"
+        }
+      ],
+      "lab": 2
+    },
+    {
+      "id": 3,
+      "title": "Scripts shell et automatisation",
+      "notions": [
+        {
+          "id": 29,
+          "title": "shebang #!"
+        },
+        {
+          "id": 30,
+          "title": "variables Bash"
+        },
+        {
+          "id": 31,
+          "title": "arguments $1 $@ $#"
+        },
+        {
+          "id": 32,
+          "title": "code de retour $?"
+        },
+        {
+          "id": 33,
+          "title": "if / else / test"
+        },
+        {
+          "id": 34,
+          "title": "for"
+        },
+        {
+          "id": 35,
+          "title": "while / until"
+        },
+        {
+          "id": 36,
+          "title": "fonctions"
+        },
+        {
+          "id": 37,
+          "title": "set -e / set -u"
+        },
+        {
+          "id": 38,
+          "title": "trap"
+        },
+        {
+          "id": 39,
+          "title": "bash -x / set -x"
+        },
+        {
+          "id": 40,
+          "title": "cron"
+        }
+      ],
+      "sessions": [
+        {
+          "number": 1,
+          "title": "Structure d'un script & contrôle de flux",
+          "practicalWork": "Activité Écriture d'un script de sauvegarde incrémentale avec rapport de sortie et gestion des arguments"
+        },
+        {
+          "number": 2,
+          "title": "Robustesse, erreurs & automatisation",
+          "practicalWork": "TP Script de monitoring système : alerte si charge CPU ou mémoire dépasse un seuil, journalisation horodatée, planification cron"
+        }
+      ],
+      "lab": 3
+    },
+    {
+      "id": 4,
+      "title": "Processus et exécution des programmes",
+      "notions": [
+        {
+          "id": 41,
+          "title": "ps"
+        },
+        {
+          "id": 42,
+          "title": "top"
+        },
+        {
+          "id": 43,
+          "title": "htop"
+        },
+        {
+          "id": 44,
+          "title": "kill"
+        },
+        {
+          "id": 45,
+          "title": "jobs"
+        },
+        {
+          "id": 46,
+          "title": "bg / fg"
+        },
+        {
+          "id": 47,
+          "title": "fork / exec / wait"
+        },
+        {
+          "id": 48,
+          "title": "strace"
+        },
+        {
+          "id": 49,
+          "title": "signaux Linux"
+        }
+      ],
+      "sessions": [
+        {
+          "number": 1,
+          "title": "Processus, threads & cycle de vie",
+          "practicalWork": "Activité Observation de la création de processus parent/enfant, envoi de signaux et analyse de l'arbre de processus"
+        },
+        {
+          "number": 2,
+          "title": "Observation & introspection système",
+          "practicalWork": "TP Analyse comportementale d'un binaire : identifier ses ressources, fichiers ouverts et interactions réseau via strace"
+        }
+      ],
+      "lab": 4
+    },
+    {
+      "id": 5,
+      "title": "Systèmes de fichiers et sécurité des accès",
+      "notions": [
+        {
+          "id": 50,
+          "title": "chmod"
+        },
+        {
+          "id": 51,
+          "title": "chown"
+        },
+        {
+          "id": 52,
+          "title": "chgrp"
+        },
+        {
+          "id": 53,
+          "title": "umask"
+        },
+        {
+          "id": 54,
+          "title": "ln"
+        },
+        {
+          "id": 55,
+          "title": "mount"
+        },
+        {
+          "id": 56,
+          "title": "umount"
+        },
+        {
+          "id": 57,
+          "title": "lsblk"
+        },
+        {
+          "id": 58,
+          "title": "fstab"
+        },
+        {
+          "id": 59,
+          "title": "/proc /sys /dev"
+        }
+      ],
+      "sessions": [
+        {
+          "number": 1,
+          "title": "Inodes, permissions & utilisateurs",
+          "practicalWork": "Activité Diagnostic et correction d'un système avec des droits incorrects : analyse, identification, correction documentée"
+        },
+        {
+          "number": 2,
+          "title": "Liens, montage & types de FS",
+          "practicalWork": "TP Création d'une arborescence sécurisée multi-utilisateurs, gestion des droits partagés, montage d'un FS virtuel"
+        }
+      ],
+      "lab": 5
+    },
+    {
+      "id": 6,
+      "title": "Mémoire et observation du système",
+      "notions": [
+        {
+          "id": 60,
+          "title": "free"
+        },
+        {
+          "id": 61,
+          "title": "vmstat"
+        },
+        {
+          "id": 62,
+          "title": "uptime"
+        },
+        {
+          "id": 63,
+          "title": "/proc/meminfo"
+        },
+        {
+          "id": 64,
+          "title": "/proc/cpuinfo"
+        },
+        {
+          "id": 65,
+          "title": "/proc/PID/maps"
+        },
+        {
+          "id": 66,
+          "title": "sysctl"
+        }
+      ],
+      "sessions": [
+        {
+          "number": 1,
+          "title": "Mémoire virtuelle & noyau",
+          "practicalWork": "Activité Lecture et interprétation de /proc/meminfo, /proc/cpuinfo et /proc/[pid]/maps d'un processus en cours"
+        },
+        {
+          "number": 2,
+          "title": "Observation & diagnostic système",
+          "practicalWork": "TP Diagnostic d'un système dégradé : identifier la source de surcharge (mémoire, CPU, I/O) à partir des outils d'observation"
+        }
+      ],
+      "lab": 6
+    },
+    {
+      "id": 7,
+      "title": "Ouvertures technologiques Linux",
+      "notions": [
+        {
+          "id": 67,
+          "title": "ip addr"
+        },
+        {
+          "id": 68,
+          "title": "ip route"
+        },
+        {
+          "id": 69,
+          "title": "ping"
+        },
+        {
+          "id": 70,
+          "title": "ss"
+        },
+        {
+          "id": 71,
+          "title": "traceroute"
+        },
+        {
+          "id": 72,
+          "title": "dig"
+        },
+        {
+          "id": 73,
+          "title": "nslookup"
+        },
+        {
+          "id": 74,
+          "title": "ssh"
+        },
+        {
+          "id": 75,
+          "title": "systemctl"
+        },
+        {
+          "id": 76,
+          "title": "journalctl"
+        },
+        {
+          "id": 77,
+          "title": "docker"
+        },
+        {
+          "id": 78,
+          "title": "BusyBox"
+        },
+        {
+          "id": 79,
+          "title": "Buildroot"
+        }
+      ],
+      "sessions": [
+        {
+          "number": 1,
+          "title": "Réseau Linux & services",
+          "practicalWork": "TP Connexion SSH, exploration d'un service actif, diagnostic réseau complet sur un environnement de test"
+        },
+        {
+          "number": 2,
+          "title": "Conteneurs & Linux embarqué",
+          "practicalWork": "TP Lancement d'un conteneur minimal OU exploration d'un système Linux embarqué ; synthèse comparative en binôme"
+        }
+      ],
+      "lab": 7
+    }
+  ]
+}
