@@ -4,11 +4,11 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
 const script=html.match(/<script>([\s\S]*?)<\/script>/)?.[1];assert.ok(script);
 const saved={done:[0,21],labDone:[0,2],attempts:{21:3},fs:{'/':{dir:true},'/home':{dir:true},'/home/student':{dir:true},'/home/student/notes.txt':{text:'cours personnel'}}};
-const storage=new Map([['linux_nexus_complete_2026',JSON.stringify(saved)]]);
+const storage=new Map([['ece_learn_linux_progress_2026',JSON.stringify(saved)]]);
 const nodes=new Map();
 const browserListeners={};
 const browserWindow={
- location:new URL('https://bm-ece.github.io/linux-nexus/'),
+ location:new URL('https://bm-ece.github.io/ece-learn/'),
  scrollTo(){},
  addEventListener(type,callback){browserListeners[type]=callback},
  history:{
@@ -41,7 +41,7 @@ state.active=22;assert.match(lesson(),/écrit le même flux/);assert.match(lesso
 assert.equal(execute('whoami').out.trim(),'student');
 assert.equal(execute('cat /home/student/notes.txt').out.trim(),'cours personnel');
 assert.equal(state.done.size,2);assert.equal(state.labDone.size,2);assert.equal(state.attempts[21],3);
-save();const persisted=JSON.parse(storage.get('linux_nexus_complete_2026'));
+save();const persisted=JSON.parse(storage.get('ece_learn_linux_progress_2026'));
 assert.deepEqual(persisted.done,[0,21]);assert.deepEqual(persisted.labDone,[0,2]);
 assert.equal(persisted.fs['/home/student/notes.txt'].text,'cours personnel');
 // Browser back/forward restores the view and active notion without reloading saved progress.
@@ -55,7 +55,7 @@ assert.equal(state.view,'terminal');
 browserWindow.location=new URL(lessonURL);
 browserListeners.popstate({state:null});
 assert.equal(state.view,'learn');assert.equal(state.active,38);
-browserWindow.location=new URL('https://bm-ece.github.io/linux-nexus/?view=catalog');
+browserWindow.location=new URL('https://bm-ece.github.io/ece-learn/?view=catalog');
 browserListeners.popstate({state:null});
 assert.equal(state.view,'catalog');
 assert.equal(state.done.size,2);assert.equal(state.labDone.size,2);
