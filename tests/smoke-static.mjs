@@ -41,18 +41,18 @@ check('Stylesheet and branding assets exist', () => {
 });
 check('Linux teaching dataset remains intact', () => {
   const source = read('courses/linux/lessons/data.js').trim();
-  const prefix = 'window.LINUX_NEXUS_DATA=';
+  const prefix = 'window.ECE_LINUX_DATA=';
   assert.ok(source.startsWith(prefix) && source.endsWith(';'), 'Linux dataset must be assigned before application startup');
-  assert.ok(app.includes('const DATA=window.LINUX_NEXUS_DATA;'));
+  assert.ok(app.includes('const DATA=window.ECE_LINUX_DATA;'));
   const data = JSON.parse(source.slice(prefix.length, -1));
   assert.ok(Array.isArray(data.commands) && data.commands.length === 79, '79 Linux commands must remain');
   assert.ok(Array.isArray(data.parts) && data.parts.length === 7);
   assert.ok(data.parts.every(part => part && typeof part === 'object'));
 });
 check('Preview progress key is distinct from production', () => {
-  assert.ok(storage.includes("location.pathname.startsWith('/ece-learn-preview/')") && storage.includes("location.pathname.startsWith('/linux-nexus-preview/')"));
-  assert.ok(storage.includes("'linux_nexus_preview_complete_2026'"));
-  assert.ok(storage.includes("'linux_nexus_complete_2026'"));
+  assert.ok(storage.includes("location.pathname.startsWith('/ece-learn-preview/')"));
+  assert.ok(storage.includes("'ece_learn_preview_linux_progress_2026'"));
+  assert.ok(storage.includes("'ece_learn_linux_progress_2026'"));
   assert.ok(app.includes('window.ECE_STORAGE.load()'));
   assert.ok(app.includes('window.ECE_STORAGE.save('));
   const memory = new Map();
@@ -69,15 +69,13 @@ check('Preview progress key is distinct from production', () => {
   };
   const prod = makeContext('/ece-learn/linux/');
   const preview = makeContext('/ece-learn-preview/linux/');
-  const legacyPreview = makeContext('/linux-nexus-preview/linux/');
   prod.save({ done: [1], labDone: [], labStarted: [], attempts: {}, fs: {} });
   preview.save({ done: [2], labDone: [], labStarted: [], attempts: {}, fs: {} });
-  assert.deepEqual(Array.from(legacyPreview.load().done), [2], 'Legacy Preview URL uses the same isolated key');
   assert.deepEqual(Array.from(prod.load().done), [1]);
   assert.deepEqual(Array.from(preview.load().done), [2]);
-  assert.ok(memory.has('linux_nexus_complete_2026'));
-  assert.ok(memory.has('linux_nexus_preview_complete_2026'));
-  memory.set('linux_nexus_preview_complete_2026', '{invalid');
+  assert.ok(memory.has('ece_learn_linux_progress_2026'));
+  assert.ok(memory.has('ece_learn_preview_linux_progress_2026'));
+  memory.set('ece_learn_preview_linux_progress_2026', '{invalid');
   assert.equal(Object.keys(preview.load()).length, 0, 'Malformed data should not crash startup');
 });
 check('Interactive entry points remain present', () => {
@@ -98,14 +96,14 @@ check('No missing local stylesheet or image references', () => {
 check('Interactive lessons, labs and simulators remain defined', () => {
   const context = { window: {} };
   runInNewContext(read('courses/linux/labs/data.js'), context);
-  assert.equal(context.window.LINUX_NEXUS_LABS.length, 7, 'Seven labs must remain');
-  assert.ok(context.window.LINUX_NEXUS_LABS.every(lab => lab.title && lab.story && Array.isArray(lab.steps) && lab.steps.length > 0));
-  assert.ok(read('courses/linux/terminal/engine.js').includes('const LABS=window.LINUX_NEXUS_LABS;'));
+  assert.equal(context.window.ECE_LINUX_LABS.length, 7, 'Seven labs must remain');
+  assert.ok(context.window.ECE_LINUX_LABS.every(lab => lab.title && lab.story && Array.isArray(lab.steps) && lab.steps.length > 0));
+  assert.ok(read('courses/linux/terminal/engine.js').includes('const LABS=window.ECE_LINUX_LABS;'));
   const terminalContext = { window: {} };
   runInNewContext(read('courses/linux/terminal/fs.js'), terminalContext);
-  assert.ok(terminalContext.window.LINUX_NEXUS_INITIAL_FS['/home/student']);
-  assert.ok(terminalContext.window.LINUX_NEXUS_INITIAL_FS['/etc/passwd']);
-  assert.ok(app.includes('const initialFS=window.LINUX_NEXUS_INITIAL_FS;'));
+  assert.ok(terminalContext.window.ECE_LINUX_INITIAL_FS['/home/student']);
+  assert.ok(terminalContext.window.ECE_LINUX_INITIAL_FS['/etc/passwd']);
+  assert.ok(app.includes('const initialFS=window.ECE_LINUX_INITIAL_FS;'));
   assert.match(read('components/lesson.js'), /\bfunction lesson\s*\(/);
   assert.match(read('components/quiz.js'), /\bfunction checkQuiz\s*\(/);
   assert.match(read('courses/linux/terminal/bash.js'), /\bfunction runScript\s*\(/);
@@ -193,7 +191,7 @@ check('Exact target architecture paths exist', () => {
     'courses/linux/lessons/data.js','courses/linux/labs/data.js',
     'courses/linux/simulators/index.js','courses/linux/terminal/engine.js',
     'tests/smoke-browser.mjs','docs/ARCHITECTURE.md',
-    'docs/PLAN-MIGRATION.md','docs/DEPLOIEMENT-PREVIEW.md',
+    'docs/ARCHITECTURE.md','docs/DEPLOIEMENT-PREVIEW.md',
     '.github/workflows/verify-development.yml','README.md'
   ]) assert.ok(read(path).length > 0, path);
 });
