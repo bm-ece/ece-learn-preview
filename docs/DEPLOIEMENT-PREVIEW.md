@@ -1,6 +1,6 @@
 # Déploiement ECE Learn — production et Preview
 
-**État : opérationnel depuis le 20 novembre 2026.** Le dépôt officiel est **`bm-ece/ece-learn`** ; le renommage et la publication sont terminés.
+**État : opérationnel depuis le 20 novembre 2026.** Le dépôt Preview porte désormais le nom `bm-ece/ece-learn-preview` et publie sous `/ece-learn-preview/`. Le dépôt officiel est **`bm-ece/ece-learn`** ; le renommage et la publication sont terminés.
 
 ## Environnements en service
 
@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | Production | `bm-ece/ece-learn` — `main` | https://bm-ece.github.io/ece-learn/ |
 | Linux production | Même dépôt — `main` | https://bm-ece.github.io/ece-learn/linux/ |
-| Preview | `bm-ece/linux-nexus-preview` — `main` | https://bm-ece.github.io/linux-nexus-preview/ |
+| Preview | `bm-ece/ece-learn-preview` — `main` | https://bm-ece.github.io/ece-learn-preview/ |
 | Développement | `bm-ece/ece-learn` — `develop/multicourse-platform` | Branche de travail, pas une URL de publication |
 
 GitHub Pages publie les sites depuis leurs branches `main`. Le déploiement Pages du nouveau dépôt officiel a réussi après fusion de la PR #62 (`8dab5e78`), et l'utilisateur a confirmé le fonctionnement du site.
@@ -17,7 +17,7 @@ GitHub Pages publie les sites depuis leurs branches `main`. Le déploiement Page
 
 1. Modifier `develop/multicourse-platform` dans `bm-ece/ece-learn`.
 2. Attendre la réussite des tests statiques et navigateurs (ordinateur et mobile).
-3. Synchroniser **tous les fichiers hors `.github/workflows/`** vers `bm-ece/linux-nexus-preview/main` ; ne pas transférer une sélection approximative de fichiers.
+3. Synchroniser **tous les fichiers hors `.github/workflows/`** vers `bm-ece/ece-learn-preview/main` ; ne pas transférer une sélection approximative de fichiers.
 4. Vérifier la CI Preview : le contrôle de parité compare les empreintes Git des fichiers à la branche de développement et échoue en cas d'écart.
 5. Vérifier le déploiement Pages et faire valider les parcours sur Preview.
 6. Publier sur `bm-ece/ece-learn/main` uniquement après autorisation explicite, puis contrôler les tests et le déploiement de production.
@@ -28,9 +28,9 @@ Les workflows diffèrent intentionnellement selon le dépôt ; ils ne font pas p
 
 | Usage | Production | Preview |
 | --- | --- | --- |
-| Portail | `/ece-learn/` | `/linux-nexus-preview/` |
-| Linux | `/ece-learn/linux/` | `/linux-nexus-preview/linux/` |
-| Fiche Linux 12 | `/ece-learn/linux/?view=learn&notion=12` | `/linux-nexus-preview/linux/?view=learn&notion=12` |
+| Portail | `/ece-learn/` | `/ece-learn-preview/` |
+| Linux | `/ece-learn/linux/` | `/ece-learn-preview/linux/` |
+| Fiche Linux 12 | `/ece-learn/linux/?view=learn&notion=12` | `/ece-learn-preview/linux/?view=learn&notion=12` |
 
 Les liens et ressources utilisent des chemins relatifs. Les cours non publiés ne possèdent pas de point d'entrée. Les anciennes URL pédagogiques Linux Nexus ne font pas partie du contrat de compatibilité.
 
