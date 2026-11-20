@@ -1,5 +1,5 @@
 
-const DATA=window.LINUX_NEXUS_DATA;
+const DATA=window.ECE_LINUX_DATA;
 if(!DATA || !Array.isArray(DATA.commands) || !Array.isArray(DATA.parts)) throw new Error('Linux teaching data failed to load');
 const COMMANDS=DATA.commands, PARTS=DATA.parts;
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -18,7 +18,7 @@ const state={
   fs:null,
   history:[],
   histCursor:0,
-  termLog:'Bienvenue dans Linux NEXUS. Tape help pour voir les commandes prises en charge.\n',
+  termLog:'Bienvenue dans ECE Learn Linux. Tape help pour voir les commandes prises en charge.\n',
   lab:0,
   quizSelection:-1,
   quizFeedback:'',
@@ -28,9 +28,9 @@ const state={
   sim:'process',
   simTick:0
 };
-const initialFS=window.LINUX_NEXUS_INITIAL_FS;
+const initialFS=window.ECE_LINUX_INITIAL_FS;
 if(!initialFS || !initialFS['/home/student']) throw new Error('Terminal initial filesystem failed to load');
-// Migration des fichiers enregistrés sous l'ancien compte, sans effacer les exercices.
+// Restauration des fichiers enregistrés dans le profil local, sans effacer les exercices.
 if(persisted.fs && typeof persisted.fs==='object' && !Array.isArray(persisted.fs)){
   const migrated={};
   for(const [oldPath,oldNode] of Object.entries(persisted.fs)){
@@ -659,8 +659,8 @@ document.addEventListener('click',e=>{
   else if(d.tickreset){state.simTick=0;render()}
   else if(d.script)runScript();
   else if(d.preset){state.scriptSource=d.preset==='backup'?'#!/usr/bin/env bash\n# Démonstration de sauvegarde\nSOURCE=/home/student\necho "Sauvegarde de $SOURCE"\nfor f in notes logs docs; do\n  echo "Copie de $f"\ndone\necho "Terminé"':'#!/usr/bin/env bash\n# Monitoring pédagogique\necho "Rapport de supervision"\nfree -h\nuptime\necho "Analyse terminée"';render()}
-  else if(d.export)download('script_linux_nexus.sh',$('script').value);
-  else if(d.exportprogress)download('bilan_linux_nexus.json',JSON.stringify({date:new Date().toISOString(),notions:[...state.done].map(i=>COMMANDS[i].name),laboratoires:[...state.labDone].map(i=>LABS[i].title),xp:window.ECE_PROGRESS.summary(state, COMMANDS.length).xp},null,2),'application/json');
+  else if(d.export)download('script_ece_learn_linux.sh',$('script').value);
+  else if(d.exportprogress)download('bilan_ece_learn_linux.json',JSON.stringify({date:new Date().toISOString(),notions:[...state.done].map(i=>COMMANDS[i].name),laboratoires:[...state.labDone].map(i=>LABS[i].title),xp:window.ECE_PROGRESS.summary(state, COMMANDS.length).xp},null,2),'application/json');
   else if(d.resetprogress){
     if(confirm('Effacer les validations et points ?')){
       state.done.clear();
