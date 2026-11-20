@@ -20,7 +20,7 @@ jobs:
           node-version: '22'
       - name: Verify byte-for-byte parity with validated development branch
         run: |
-          git fetch --no-tags --depth=1 https://github.com/bm-ece/linux-nexus.git refs/heads/develop/multicourse-platform
+          git fetch --no-tags --depth=1 https://github.com/bm-ece/ece-learn.git refs/heads/develop/multicourse-platform
           node <<'NODE'
           const {execFileSync}=require('node:child_process');
           function files(ref) {
