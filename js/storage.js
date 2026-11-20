@@ -2,8 +2,8 @@
 // Script classique chargé avant app.js ; aucune modification du format des données.
 (function () {
   'use strict';
-  const isPreview = (location.pathname.startsWith('/ece-learn-preview/') || location.pathname.startsWith('/linux-nexus-preview/'));
-  const key = isPreview ? 'linux_nexus_preview_complete_2026' : 'linux_nexus_complete_2026';
+  const isPreview = location.pathname.startsWith('/ece-learn-preview/');
+  const key = isPreview ? 'ece_learn_preview_linux_progress_2026' : 'ece_learn_linux_progress_2026';
   window.ECE_STORAGE = {
     load() {
       try { return JSON.parse(localStorage.getItem(key) || '{}'); }
