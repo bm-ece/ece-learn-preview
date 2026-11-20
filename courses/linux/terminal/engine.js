@@ -4,7 +4,7 @@ function terminalView(){
   return `<div class="hero"><div class="eyebrow">TERMINAL PÉDAGOGIQUE ISOLÉ</div><h1>Expérimente sans risque.</h1>` +
     `<p class="muted">Le système de fichiers est fictif, mais les commandes prises en charge agissent sur son état. Les pipelines, les redirections, la navigation et plusieurs outils de traitement de texte sont interprétés localement. Aucune commande ne touche à ton ordinateur.</p>` +
     `<div class="actions"><button data-resetfs="1">Réinitialiser les fichiers du laboratoire</button><button data-clear="1">Effacer l'écran</button><button data-nav="catalog">Consulter les explications</button></div></div>` +
-    `<div class="split"><div><div class="terminal"><div class="termbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:8px">student@linux-nexus — bash simulé</span></div>` +
+    `<div class="split"><div><div class="terminal"><div class="termbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span style="margin-left:8px">student@ece-learn — bash simulé</span></div>` +
     `<div class="termout" id="termout">${esc(state.termLog)}</div>` +
     `<div class="termline"><span id="prompt">student@ece-os:${esc(state.cwd)}$</span><input id="cmd" spellcheck="false" autocomplete="off" aria-label="Commande du terminal" placeholder="Tape une commande puis Entrée"></div></div>` +
     `<p class="muted small">Astuce : ↑ et ↓ parcourent l'historique. Tape <code>help</code> pour afficher les commandes reconnues.</p></div><div><div class="card"><h3>🗂️ Système de fichiers virtuel</h3><p class="muted small">Ces fichiers existent dans le navigateur et sont conservés localement.</p>` +
@@ -225,7 +225,7 @@ function submitCommand(line){
   if(state.view==='terminal')render();
   return r;
 }
-const LABS=window.LINUX_NEXUS_LABS;
+const LABS=window.ECE_LINUX_LABS;
 if(!Array.isArray(LABS)||LABS.length!==7) throw new Error('Linux laboratories failed to load');
 let labSteps={};function labs(){return `<div class="hero"><div class="eyebrow">APPRENTISSAGE PAR L'ENQUÊTE</div><h1>7 laboratoires. 7 situations.</h1>` +
     `<p class="muted">Chaque scénario a une mission, un environnement fictif et des objectifs vérifiés sur la sortie des commandes. Tu peux proposer des commandes équivalentes si elles produisent les observations attendues.</p></div>` +
