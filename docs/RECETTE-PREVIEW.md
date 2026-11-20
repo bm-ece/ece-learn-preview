@@ -1,36 +1,37 @@
-# Recette ECE Learn — procès-verbal de validation
+# Recette de test — ECE Learn
 
-**Statut : VALIDÉ.** La recette Preview et la vérification finale du site officiel ont été confirmées par l'utilisateur le **20 novembre 2026**.
+**Statut : plateforme en phase de test interne. La livraison aux étudiants n'est pas autorisée.**
 
-- **Production validée :** https://bm-ece.github.io/ece-learn/
-- **Linux production :** https://bm-ece.github.io/ece-learn/linux/
-- **Preview de référence :** https://bm-ece.github.io/ece-learn-preview/
-- **Référence graphique approuvée :** portail au commit `52354f55`.
-- **Version publiée :** fusion PR #62, commit `8dab5e78905b77b46bd29ec834be5164efc44fc2`.
+## Périmètre
 
-## Parcours validés
+- Portail officiel de test : https://bm-ece.github.io/ece-learn/.
+- Cours Linux : https://bm-ece.github.io/ece-learn/linux/.
+- Environnement Preview : https://bm-ece.github.io/ece-learn-preview/.
+- Référence visuelle : commit `52354f55`.
 
-| Périmètre | Validation |
+## Scénarios de recette
+
+| Fonction | Contrôle attendu |
 | --- | --- |
-| Portail ECE Learn et présentation ordinateur/mobile | Confirmée par l'utilisateur |
-| Niveaux ING1, ING2, ING3 ; Linux associé à ING3 | Tests automatisés et recette Preview |
-| Navigation vers Linux et retour aux matières | Tests et recette |
-| 79 fiches, cinq cartes, quiz et missions | Couverture automatisée desktop/mobile |
-| 7 laboratoires, 28 commandes de référence, erreurs et réinitialisation | Couverture automatisée desktop/mobile |
-| Terminal, historique, Bash et 4 simulateurs | Couverture automatisée desktop/mobile |
-| Progression sauvegardée et rechargement | Tests et recette |
-| Liens directs, URL invalides et ressources statiques | Tests automatisés |
-| Chemin cible `/ece-learn/`, clé historique Linux et séparation Preview | Tests automatisés |
-| Nouveau portail publié sur GitHub Pages | Déploiement réussi et validation utilisateur |
+| Portail | Présentation conforme sur ordinateur et mobile |
+| Niveaux | ING1 et ING2 sans cours attribué ; Linux visible en ING3 |
+| Navigation | Ouverture de Linux et retour au portail |
+| Notions | 79 fiches, cinq cartes pédagogiques, quiz et missions |
+| Laboratoires | 7 laboratoires et 28 commandes de référence |
+| Outils | Terminal, atelier Bash et 4 simulateurs |
+| Progression | Sauvegarde et rechargement dans le navigateur |
+| Liens directs | Notions, laboratoires, simulateurs et bibliothèque |
+| Preview | Clé de progression distincte du site officiel de test |
+| Qualité | CI verte, ressources accessibles, parité avec développement |
 
-Les tests automatisés ont été réalisés sur des **viewports** ordinateur et mobile. La validation utilisateur constitue une étape distincte ; aucun détail d'appareil ou de navigateur non fourni n'est inventé ici.
+Les tests automatisés sur des formats ordinateur et mobile ne remplacent pas la recette humaine. Ne pas attribuer à un testeur des appareils, navigateurs ou résultats non explicitement constatés.
 
-## Vérifications de publication
+## Conditions de validation
 
-- CI développement : verte après le test du chemin `/ece-learn/` et la correction du workflow Linux.
-- CI Preview : verte ; synchronisation finale et comparaison des **38 fichiers hors workflows** confirmées avant migration.
-- CI production : **Linux regression checks** et **pages build and deployment** verts après fusion `8dab5e78`.
-- Sauvegarde de l'ancienne production : `backup/linux-nexus-production-2026-11-20` au commit `c0add686`.
-- L'utilisateur a confirmé que le nouveau site fonctionne après la publication.
+1. CI développement réussie.
+2. Synchronisation complète de Preview et contrôle de parité réussi.
+3. Déploiement GitHub Pages Preview réussi.
+4. Vérification fonctionnelle et visuelle par le responsable.
+5. Accord explicite avant toute modification du site officiel de test.
 
-**Décision : recette clôturée, migration publiée et validée.** Les futures évolutions pédagogiques constituent de nouveaux travaux et non des étapes restantes de cette migration.
+**Important :** un site techniquement accessible sur GitHub Pages n'est pas pour autant livré aux étudiants. La décision de livraison est distincte et reste à prendre.
