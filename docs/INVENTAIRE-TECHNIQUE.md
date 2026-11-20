@@ -1,37 +1,44 @@
-# Inventaire technique ECE Learn — état après migration
+# Inventaire technique — ECE Learn
 
-**État constaté au 20 novembre 2026 :** migration Linux Nexus → ECE Learn terminée. Le présent inventaire décrit l'application publiée ; les extractions initiales depuis le HTML monolithique appartiennent à l'historique de la migration.
+**Statut : environnement de test interne, sans livraison aux étudiants.**
 
-## Dépôt et publication
+## Dépôts et sites
 
-- Dépôt officiel : `bm-ece/ece-learn`, branche `main`.
-- Site officiel : https://bm-ece.github.io/ece-learn/ ; Linux : https://bm-ece.github.io/ece-learn/linux/.
-- Développement : `develop/multicourse-platform`.
-- Preview : `bm-ece/ece-learn-preview/main`.
-- Sauvegarde pré-migration : `backup/linux-nexus-production-2026-11-20` (`c0add686`).
+- Site officiel de test : `bm-ece/ece-learn/main` — https://bm-ece.github.io/ece-learn/.
+- Développement : `bm-ece/ece-learn/develop/multicourse-platform`.
+- Preview : `bm-ece/ece-learn-preview/main` — https://bm-ece.github.io/ece-learn-preview/.
 
-## Application et contenus
+## Application
 
-- Application statique HTML/CSS/JavaScript, sans framework ni backend.
-- `index.html` : portail ; `linux/index.html` : entrée Linux et navigation profonde.
-- `js/catalog.js` : catalogue et niveaux ; `js/portal.js` : interface du portail.
-- `js/routing.js`, `js/storage.js`, `js/progress.js` : services Linux ; `js/app.js` : coordination.
+Application statique HTML, CSS et JavaScript, sans framework, serveur applicatif ni authentification.
+
+- `index.html` : portail ; `linux/index.html` : cours Linux.
+- `js/catalog.js` et `js/portal.js` : catalogue et choix du niveau.
+- `js/routing.js`, `js/storage.js`, `js/progress.js` et `js/app.js` : navigation et fonctionnement Linux.
 - `components/lesson.js`, `quiz.js`, `navigation.js` : composants pédagogiques.
-- `courses/linux/course.json` et `courses/linux/syllabus/syllabus.json` : métadonnées, 7 domaines, 14 séances, 79 notions.
-- `courses/linux/lessons/`, `labs/`, `simulators/`, `terminal/` : 79 fiches, 7 laboratoires et 28 commandes de référence, 4 simulateurs, shell et système de fichiers simulés ; atelier Bash.
-- `css/tokens.css`, `layout.css`, `components.css`, `styles.css` et `portal.css` : styles, compatibilité et portail.
+- `courses/linux/course.json` et `syllabus/syllabus.json` : métadonnées et organisation pédagogique.
+- `courses/linux/lessons/`, `labs/`, `simulators/`, `terminal/` : contenus et outils.
+- `css/` : styles du portail et du cours.
+- `tests/` et `.github/workflows/` : contrôles automatisés.
 
-## Persistance
+## Contenu et niveaux
 
-La clé historique **`linux_nexus_complete_2026`** est conservée en production après renommage du dépôt. Elle contient notamment `done`, `labDone`, `labStarted`, `attempts`, `fs`. Preview utilise **`linux_nexus_preview_complete_2026`** ; le niveau choisi est mémorisé sous **`ece_learn_selected_level`**. Ces clés ne doivent pas être modifiées sans procédure de migration et tests.
+Linux : **79 notions, 7 domaines, 14 séances, 7 laboratoires, 28 commandes de référence, terminal, atelier Bash et 4 simulateurs**.
 
-## Contrôles réalisés
+Le portail propose ING1, ING2 et ING3. **Linux est associé uniquement à ING3**. Les autres matières sont indisponibles et ne sont pas affectées à un niveau.
 
-- Tests statiques, tests de navigation navigateur ordinateur/mobile, 79 fiches, quiz, missions, laboratoires, terminal, Bash et simulateurs.
-- Contrôle des chemins GitHub Pages `/ece-learn/` et `/ece-learn/linux/`, des liens profonds et de la persistance.
-- Parité des **38 fichiers hors workflows** entre développement et Preview vérifiée avant fusion.
-- Tests de production et déploiement Pages verts au commit `8dab5e78` ; validation utilisateur confirmée.
+## Stockage navigateur
 
-## Règles de maintenance
+- Progression du site officiel de test : `ece_learn_linux_progress_2026`.
+- Progression Preview : `ece_learn_preview_linux_progress_2026`.
+- Niveau sélectionné : `ece_learn_selected_level`.
 
-Conserver le rendu du portail validé au commit `52354f55`, les contenus et identifiants historiques, les clés de progression et les chemins relatifs. Utiliser développement → CI verte → synchronisation complète Preview → contrôle de parité → recette → autorisation de publication. La branche de sauvegarde protège le code de l'ancienne production ; elle ne contient pas les données navigateur.
+Les données sont locales au navigateur, sans compte ni synchronisation entre appareils.
+
+## Vérifications et maintenance
+
+Tests statiques et navigateurs ordinateur/mobile ; vérification des liens directs, de la progression et des activités. Le contrôle Preview compare les fichiers applicatifs à la branche de développement, hors workflows.
+
+Référence graphique : commit `52354f55`. Toute évolution suit **développement → CI verte → Preview synchronisée → parité → recette → autorisation explicite**.
+
+La plateforme est encore en test : aucune mise à disposition des étudiants n'est déclarée.
