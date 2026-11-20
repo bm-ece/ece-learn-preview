@@ -71,7 +71,8 @@ check('Preview progress key is distinct from production', () => {
   const preview = makeContext('/ece-learn-preview/linux/');
   const legacyPreview = makeContext('/linux-nexus-preview/linux/');
   prod.save({ done: [1], labDone: [], labStarted: [], attempts: {}, fs: {} });
-  preview.save({ done: [2], labDone: [], labStarted: [], attempts: {}, fs: {} });\n  assert.deepEqual(Array.from(legacyPreview.load().done), [2], 'Legacy Preview URL uses the same isolated key');
+  preview.save({ done: [2], labDone: [], labStarted: [], attempts: {}, fs: {} });
+  assert.deepEqual(Array.from(legacyPreview.load().done), [2], 'Legacy Preview URL uses the same isolated key');
   assert.deepEqual(Array.from(prod.load().done), [1]);
   assert.deepEqual(Array.from(preview.load().done), [2]);
   assert.ok(memory.has('linux_nexus_complete_2026'));
