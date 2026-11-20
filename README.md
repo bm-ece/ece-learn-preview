@@ -2,35 +2,40 @@
 
 **Votre espace d'apprentissage interactif**
 
-ECE Learn est la plateforme pédagogique ECE multi-matières, publiée sur GitHub Pages. **La migration depuis Linux Nexus est terminée le 20 novembre 2026** : dépôt renommé, code fusionné dans `main`, tests et déploiement verts, recette Preview et vérification utilisateur validées.
+ECE Learn est une plateforme pédagogique ECE **en phase de test interne**. Elle est accessible sur GitHub Pages pour la validation, mais **n'est pas encore livrée aux étudiants**.
 
-## Accès
+## Accès et environnements
 
-- **Production :** https://bm-ece.github.io/ece-learn/ — dépôt `bm-ece/ece-learn`, branche `main`.
+- **Site officiel de test :** https://bm-ece.github.io/ece-learn/ — dépôt `bm-ece/ece-learn`, branche `main`.
 - **Cours Linux :** https://bm-ece.github.io/ece-learn/linux/.
-- **Preview :** https://bm-ece.github.io/ece-learn-preview/ — dépôt indépendant `bm-ece/ece-learn-preview`, branche `main`.
+- **Preview :** https://bm-ece.github.io/ece-learn-preview/ — dépôt `bm-ece/ece-learn-preview`, branche `main`.
 - **Développement :** branche `develop/multicourse-platform` du dépôt `bm-ece/ece-learn`.
-- **Sauvegarde pré-migration :** branche `backup/linux-nexus-production-2026-11-20`, commit `c0add686f4f907b153b20eceb6d5857c77bc2d3e`.
 
-## Fonctionnement publié
+## Fonctionnement actuel
 
-Le portail propose ING1, ING2 et ING3. **Linux est disponible uniquement dans le catalogue ING3** ; Réseaux, Programmation et Cybersécurité ne sont pas encore publiés ni affectés à un niveau. Le filtre de niveau ne bloque pas les liens directs.
+Le portail propose ING1, ING2 et ING3. **Linux est associé uniquement à ING3**. Réseaux, Programmation et Cybersécurité ne sont pas encore disponibles et n'ont pas de niveau attribué. Le choix du niveau filtre le catalogue, sans empêcher l'ouverture d'un lien direct.
 
-Linux conserve **79 notions, 7 domaines, 14 séances, 7 laboratoires, 28 commandes de référence, un terminal, l'atelier Bash et 4 simulateurs**. Les données pédagogiques historiques et la progression sont préservées.
+Le cours Linux comporte **79 notions, 7 domaines, 14 séances, 7 laboratoires, 28 commandes de référence, un terminal, un atelier Bash et 4 simulateurs**.
 
 ## Architecture
 
-- `index.html` : portail ; `linux/index.html` : entrée Linux et liens profonds `?view=learn&notion=12`.
-- `js/catalog.js`, `js/portal.js` : catalogue et sélection du niveau.
-- `js/routing.js`, `js/storage.js`, `js/progress.js` : navigation, persistance et progression ; `js/app.js` : coordination Linux.
-- `components/` : leçon, quiz, navigation ; `courses/linux/` : métadonnées, syllabus, fiches, laboratoires, terminal, simulateurs.
-- `css/tokens.css`, `css/layout.css`, `css/components.css` : styles Linux ; `css/styles.css` : point d'entrée compatible ; `css/portal.css` : portail validé.
-- `tests/` et `.github/workflows/` : contrôles statiques, navigateurs ordinateur/mobile et régressions.
+- `index.html` : portail ECE Learn ; `linux/index.html` : cours Linux.
+- `js/catalog.js`, `js/portal.js` : catalogue et choix du niveau.
+- `js/routing.js`, `js/storage.js`, `js/progress.js`, `js/app.js` : navigation, sauvegarde et fonctionnement Linux.
+- `components/` : leçons, quiz et navigation.
+- `courses/linux/` : contenus, laboratoires, simulateurs et terminal.
+- `css/` : présentation ; `tests/` et `.github/workflows/` : vérifications.
 
-## Données et précautions
+## Données locales
 
-Les URLs `/ece-learn/` et `/ece-learn/linux/` sont les URLs officielles. La progression Linux de production conserve la clé `linux_nexus_complete_2026`, même après le renommage ; Preview utilise `linux_nexus_preview_complete_2026`. Le niveau choisi utilise `ece_learn_selected_level`. Ne pas effacer ou renommer ces clés sans migration testée. Les anciennes URL pédagogiques ne sont pas garanties.
+La progression Linux utilise `ece_learn_linux_progress_2026` sur le site officiel de test et `ece_learn_preview_linux_progress_2026` sur Preview. Le niveau choisi est mémorisé sous `ece_learn_selected_level`.
 
-La référence visuelle du portail reste le commit `52354f55` ; tout changement graphique exige une validation préalable. Les futures évolutions suivent le circuit développement → CI verte → synchronisation complète Preview et contrôle de parité → recette → accord de publication.
+Les données sont enregistrées localement dans le navigateur ; elles ne constituent ni un compte étudiant ni une synchronisation entre appareils. La plateforme étant en test, les données de test peuvent être réinitialisées après décision explicite.
 
-Voir [architecture](docs/ARCHITECTURE.md), [bilan de migration](docs/PLAN-MIGRATION.md), [déploiement Preview](docs/DEPLOIEMENT-PREVIEW.md) et [recette validée](docs/RECETTE-PREVIEW.md).
+## Règles de développement et de validation
+
+Le portail conserve sa référence graphique validée au commit `52354f55`. Toute modification visuelle nécessite un accord préalable.
+
+Circuit de travail : **développement → CI verte → synchronisation complète Preview → contrôle de parité → recette → autorisation explicite de publication**. La branche `main` correspond au site officiel de test, **pas à une livraison aux étudiants**.
+
+Voir [architecture](docs/ARCHITECTURE.md), [inventaire technique](docs/INVENTAIRE-TECHNIQUE.md), [déploiement Preview](docs/DEPLOIEMENT-PREVIEW.md) et [recette](docs/RECETTE-PREVIEW.md).
