@@ -1,4 +1,4 @@
-window.LINUX_NEXUS_INITIAL_FS={
+window.ECE_LINUX_INITIAL_FS={
   '/': {
     dir: true
   },
@@ -80,7 +80,7 @@ window.LINUX_NEXUS_INITIAL_FS={
       'SwapFree:        2097152 kB'
   },
   '/proc/cpuinfo': {
-    text: 'processor : 0\nmodel name : Linux Nexus Virtual CPU\nprocessor : 1\nmodel name : Linux Nexus Virtual CPU'
+    text: 'processor : 0\nmodel name : ECE Learn Linux Virtual CPU\nprocessor : 1\nmodel name : ECE Learn Linux Virtual CPU'
   },
   '/proc/self/maps': {
     text: '00400000-00452000 r-xp 00000000 08:01 100 /usr/bin/demo\n7ffd0000-7ffd1000 rw-p 00000000 00:00 0 [stack]'
