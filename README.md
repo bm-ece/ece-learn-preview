@@ -2,34 +2,35 @@
 
 **Votre espace d'apprentissage interactif**
 
-Plateforme pédagogique statique ECE, en cours de migration depuis Linux Nexus vers un portail multi-matières. Le cours **Linux** (ING3) est le seul cours disponible ; Réseaux, Programmation et Cybersécurité ne sont pas encore publiés et n'ont pas de niveau attribué.
+ECE Learn est la plateforme pédagogique ECE multi-matières, publiée sur GitHub Pages. **La migration depuis Linux Nexus est terminée le 20 novembre 2026** : dépôt renommé, code fusionné dans `main`, tests et déploiement verts, recette Preview et vérification utilisateur validées.
 
-## Accès et branches
+## Accès
 
-- [Production actuelle — Linux Nexus](https://bm-ece.github.io/linux-nexus/) : branche `main`, **ne pas modifier sans autorisation explicite**.
-- [Preview ECE Learn](https://bm-ece.github.io/linux-nexus-preview/) : dépôt indépendant `bm-ece/linux-nexus-preview`, branche `main`.
-- Développement : `bm-ece/linux-nexus`, branche `develop/multicourse-platform`.
-- Nom et URL futurs **non encore activés** : `bm-ece/ece-learn` et `https://bm-ece.github.io/ece-learn/`.
+- **Production :** https://bm-ece.github.io/ece-learn/ — dépôt `bm-ece/ece-learn`, branche `main`.
+- **Cours Linux :** https://bm-ece.github.io/ece-learn/linux/.
+- **Preview :** https://bm-ece.github.io/linux-nexus-preview/ — dépôt indépendant `bm-ece/linux-nexus-preview`, branche `main`.
+- **Développement :** branche `develop/multicourse-platform` du dépôt `bm-ece/ece-learn`.
+- **Sauvegarde pré-migration :** branche `backup/linux-nexus-production-2026-11-20`, commit `c0add686f4f907b153b20eceb6d5857c77bc2d3e`.
 
-## Architecture actuelle
+## Fonctionnement publié
 
-- `index.html` : portail ECE Learn.
-- `linux/index.html` : cours Linux et liens profonds `?view=learn&notion=12`.
-- `js/catalog.js` : registre des matières et niveaux.
-- `js/routing.js`, `js/storage.js`, `js/progress.js` : services extraits.
-- `js/app.js` : orchestration et état Linux ; `components/` : fiches, quiz et navigation ; `courses/linux/` : syllabus, notions, laboratoires, terminal, Bash et simulateurs.
-- `css/portal.css` : portail approuvé ; `css/styles.css` importe dans l'ordre `tokens.css`, `layout.css`, `components.css` pour Linux.
-- `courses/linux/course.json` : métadonnées ; `courses/linux/syllabus/syllabus.json` : référence des 7 domaines, 14 séances et 79 notions. Le catalogue actif demeure `js/catalog.js`.
-- `tests/` : contrôles statiques et navigateur ; `docs/` : plan et recette.
+Le portail propose ING1, ING2 et ING3. **Linux est disponible uniquement dans le catalogue ING3** ; Réseaux, Programmation et Cybersécurité ne sont pas encore publiés ni affectés à un niveau. Le filtre de niveau ne bloque pas les liens directs.
 
-Les dossiers cibles `components/`, `courses/linux/` et les trois feuilles CSS sont en place. Le chargement garde un fichier d'entrée CSS de compatibilité et des scripts JavaScript classiques. Les 79 notions restent structurées en ordre stable dans `courses/linux/lessons/data.js` ; les 7 laboratoires, les 4 simulateurs et le terminal possèdent leurs répertoires. `js/app.js` conserve la coordination générale sans dupliquer les moteurs. Le schéma cible est présent, avec quelques fichiers de compatibilité supplémentaires.
+Linux conserve **79 notions, 7 domaines, 14 séances, 7 laboratoires, 28 commandes de référence, un terminal, l'atelier Bash et 4 simulateurs**. Les données pédagogiques historiques et la progression sont préservées.
 
-## Règles de migration
+## Architecture
 
-1. Ne jamais fusionner ni publier sur `main` sans accord explicite.
-2. Préserver les 79 notions, 7 laboratoires, terminal, Bash, 4 simulateurs et la progression existante.
-3. Garder la référence visuelle du portail au commit `52354f55` ; aucun changement graphique sans validation préalable.
-4. Tester sur `develop/multicourse-platform`, attendre la CI verte, puis synchroniser Preview uniquement pour les modifications nécessaires à son fonctionnement.
-5. Faire valider la Preview avant toute publication officielle.
+- `index.html` : portail ; `linux/index.html` : entrée Linux et liens profonds `?view=learn&notion=12`.
+- `js/catalog.js`, `js/portal.js` : catalogue et sélection du niveau.
+- `js/routing.js`, `js/storage.js`, `js/progress.js` : navigation, persistance et progression ; `js/app.js` : coordination Linux.
+- `components/` : leçon, quiz, navigation ; `courses/linux/` : métadonnées, syllabus, fiches, laboratoires, terminal, simulateurs.
+- `css/tokens.css`, `css/layout.css`, `css/components.css` : styles Linux ; `css/styles.css` : point d'entrée compatible ; `css/portal.css` : portail validé.
+- `tests/` et `.github/workflows/` : contrôles statiques, navigateurs ordinateur/mobile et régressions.
 
-Voir [le plan de migration](docs/PLAN-MIGRATION.md), [la procédure Preview](docs/DEPLOIEMENT-PREVIEW.md) et [la recette](docs/RECETTE-PREVIEW.md).
+## Données et précautions
+
+Les URLs `/ece-learn/` et `/ece-learn/linux/` sont les URLs officielles. La progression Linux de production conserve la clé `linux_nexus_complete_2026`, même après le renommage ; Preview utilise `linux_nexus_preview_complete_2026`. Le niveau choisi utilise `ece_learn_selected_level`. Ne pas effacer ou renommer ces clés sans migration testée. Les anciennes URL pédagogiques ne sont pas garanties.
+
+La référence visuelle du portail reste le commit `52354f55` ; tout changement graphique exige une validation préalable. Les futures évolutions suivent le circuit développement → CI verte → synchronisation complète Preview et contrôle de parité → recette → accord de publication.
+
+Voir [architecture](docs/ARCHITECTURE.md), [bilan de migration](docs/PLAN-MIGRATION.md), [déploiement Preview](docs/DEPLOIEMENT-PREVIEW.md) et [recette validée](docs/RECETTE-PREVIEW.md).
