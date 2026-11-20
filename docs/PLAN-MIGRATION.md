@@ -1,6 +1,6 @@
 # Bilan de migration — Linux Nexus vers ECE Learn
 
-**Statut : TERMINÉ — 20 novembre 2026.** Ce document consigne les opérations réalisées ; il ne constitue plus une liste de tâches avant publication.
+**Statut : TERMINÉ — 20 novembre 2026.** Le dépôt Preview a ensuite été renommé `bm-ece/ece-learn-preview`, sans changer son rôle ni sa clé de progression. Ce document consigne les opérations réalisées ; il ne constitue plus une liste de tâches avant publication.
 
 ## Publication effectuée
 
@@ -16,7 +16,7 @@
 | Phase | Résultat |
 | --- | --- |
 | Inventaire et architecture | Inventaire technique, architecture et convention URL par matière documentés |
-| Preview indépendante | Dépôt `bm-ece/linux-nexus-preview`, Pages, isolation de stockage et validation utilisateur |
+| Preview indépendante | Dépôt `bm-ece/ece-learn-preview`, Pages, isolation de stockage et validation utilisateur |
 | Styles | `tokens.css`, `layout.css`, `components.css`, compatibilité `styles.css` et portail approuvé |
 | Services | Routage, stockage, progression et catalogue séparés |
 | Contenu Linux | 79 notions, syllabus de 7 domaines et 14 séances, 7 laboratoires, 28 commandes, terminal, Bash, 4 simulateurs |
@@ -50,7 +50,7 @@ La branche `backup/linux-nexus-production-2026-11-20` pointe toujours vers le co
 
 - Production : `bm-ece/ece-learn`, `main`.
 - Développement : `develop/multicourse-platform` dans le même dépôt.
-- Preview : `bm-ece/linux-nexus-preview`, `main`.
+- Preview : `bm-ece/ece-learn-preview`, `main`.
 - Circuit des modifications ultérieures : tests sur développement, CI verte, synchronisation **intégrale** des fichiers hors workflows avec Preview, contrôle de parité, validation utilisateur puis publication autorisée.
 - La référence graphique du portail est `52354f55`. Aucun changement graphique non validé.
 - Les matières Réseaux, Programmation et Cybersécurité ne sont pas encore disponibles : leur publication est une **évolution ultérieure**, distincte de la migration achevée.
