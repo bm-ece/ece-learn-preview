@@ -154,12 +154,15 @@ check('ECE Learn portal and Linux entry point exist', () => {
   assert.ok(linux.includes('../css/styles.css'));
 });
 
-check('Portal visual palette matches Linux without changing course styles', () => {
+check('Portal follows ECE 2026 identity and keeps the footer at page bottom', () => {
   const portalCss = read('css/portal.css');
-  for (const color of ['#070d1b', '#111d31', '#172842', '#2a4161', '#ecf6ff', '#a2b8d2', '#54e6ed']) {
-    assert.ok(portalCss.includes(color), 'Missing shared Linux palette color ' + color);
+  for (const color of ['#005157', '#F9F9F4', '#40B7BF', '#FFA64D']) {
+    assert.ok(portalCss.includes(color), 'Missing ECE 2026 brand color ' + color);
   }
-  assert.ok(portal.includes('name="theme-color" content="#091528"'));
+  assert.ok(portal.includes('name="theme-color" content="#005157"'));
+  assert.ok(portalCss.includes('min-height:100dvh'));
+  assert.ok(portalCss.includes('display:flex;flex-direction:column'));
+  assert.ok(portalCss.includes('margin-top:auto'));
   assert.ok(portalCss.includes('@media(max-width:600px)'));
   assert.ok(portalCss.includes(':focus-visible'));
 });
