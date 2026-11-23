@@ -404,19 +404,7 @@ th{
   }
 
 
-/* ECE visual identity — teal from supplied school logo; accessible dark academic interface. */
-:root{
-  --bg:#06191d;
-  --p:#0b262b;
-  --p2:#11333a;
-  --line:#28565b;
-  --fg:#f3fbfb;
-  --muted:#b5d0d0;
-  --cyan:#5ce5db;
-  --green:#8ee9bd;
-  --gold:#ffd38d;
-  --red:#ff9eaa}
-
+/* Identité ECE : variables regroupées dans tokens.css. */
 body{
   background:radial-gradient(ellipse at 85% -8%,#0d5c61 0%,transparent 45%),radial-gradient(ellipse at 0% 105%,#073b40 0%,transparent 36%),var(--bg)}
 
@@ -1088,3 +1076,41 @@ body{
 
 /* Lien de retour au portail multi-matières, sans modifier la navigation Linux. */
 .back-to-portal{display:block;margin:0 9px 20px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;color:var(--cyan);font-size:13px;font-weight:650;text-decoration:none}.back-to-portal:hover{background:var(--p2);border-color:var(--cyan)}.back-to-portal:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+
+/* ECE 2026 — composants Linux : cartes, terminal, boutons, progression. */
+h1,h2,h3,.logo,.ece-brand-text{font-family:"Funnel Display","Funnel Sans",system-ui,sans-serif}
+.status-value{color:#85E7E3}
+.hero{background:radial-gradient(circle at 91% 8%,rgba(64,183,191,.14),transparent 33%),linear-gradient(120deg,#104247,#0B2C31 57%,#082126);border:1px solid #327E81;box-shadow:0 20px 60px rgba(0,10,12,.17),inset 0 1px rgba(190,255,249,.07)}
+.hero:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#40B7BF,#7CE6D3 45%,transparent 80%);pointer-events:none}
+.hero:after{color:#9AE9E0;opacity:.065}
+.hero h1{letter-spacing:-.04em}
+.card,.path-step{background:linear-gradient(150deg,#103438,#0B292D);border-color:#28595D;box-shadow:0 8px 26px rgba(0,12,14,.13)}
+.card:hover,.path-step:hover{border-color:#4A999A}
+.path-step:before{background:#0B292D;border-color:#66DBDB}
+.path-step.complete:before{background:var(--green);border-color:var(--green)}
+.path-step.partial:before{background:linear-gradient(90deg,var(--green) 50%,#0B292D 50%)}
+button{background:#16444A;border-color:#357579}
+button:hover{background:#1D575D;border-color:#68D0D1}
+button.primary{background:linear-gradient(120deg,#00636A,#008F98);border-color:#64D6D9;color:#fff}
+button.primary:hover{background:linear-gradient(120deg,#007780,#00A3AB)}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #79E6E7;outline-offset:3px}
+input,textarea,select{background:#071F23;border-color:#34696D}
+.tag{background:#103E43;color:#A3EEEB;border-color:#397F83}
+.tag.gold{background:#48321E;color:#FFD2A3;border-color:#95663D}
+.pill{background:#17474C;color:#B3EFEB}
+.progress,.meter{background:#1A484C}
+.progress>div,.meter div{background:linear-gradient(90deg,#40B7BF,#84E3C5)}
+.code{background:#06191D;border-color:#31696D;color:#B7F3E7}
+.terminal{background:#031315;border-color:#3B8083}
+.termbar{background:#10373B;color:#C2E1DD}
+.termout{color:#D1EBE7}
+.choice.selected{background:#174B50;border-color:#55D3D7}
+.labstep b{background:#17545A;color:#A3F0ED}
+.hint{border-left-color:#FFA64D;background:#3A2A1B;color:#FFE0BA}
+.footer{background:#003739;border-top-color:#317275;color:#D6F0EC}
+.ece-footer-link{color:#A6F3ED}
+.back-to-portal{border-color:#34777B;color:#9DF2EC}
+.back-to-portal:hover{background:#12464A;border-color:#68D4D0}
+.ece-logo-frame{border-color:#5CA9A7;box-shadow:0 0 24px rgba(64,183,191,.16)}
+@media(prefers-reduced-motion:reduce){button,.nav,.domain-card,.progress>div,.status-floating{transition:none}}
