@@ -35,6 +35,12 @@ check('Stylesheet and branding assets exist', () => {
   assert.match(css, /@import url\('\.\/tokens\.css'\)/);
   assert.match(css, /@import url\('\.\/layout\.css'\)/);
   assert.match(css, /@import url\('\.\/components\.css'\)/);
+  assert.ok(css.includes("@import url('./linux-ece-2026.css')"));
+  const linuxTheme = read('css/linux-ece-2026.css');
+  for (const color of ['#005157', '#40B7BF', '#FFA64D']) {
+    assert.ok(linuxTheme.includes(color), 'Missing ECE 2026 color ' + color);
+  }
+  assert.ok(!linuxTheme.includes('position:fixed!important'), 'Linux theme must not force fixed positioning');
   assert.ok(['css/tokens.css','css/layout.css','css/components.css'].reduce((n,p)=>n+read(p).length,0) > 10000);
   assert.ok(existsSync(new URL('../assets/favicon.svg', import.meta.url)));
   assert.ok(existsSync(new URL('../assets/ece-logo.jpg', import.meta.url)));
