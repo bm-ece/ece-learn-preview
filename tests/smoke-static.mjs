@@ -35,12 +35,17 @@ check('Stylesheet and branding assets exist', () => {
   assert.match(css, /@import url\('\.\/tokens\.css'\)/);
   assert.match(css, /@import url\('\.\/layout\.css'\)/);
   assert.match(css, /@import url\('\.\/components\.css'\)/);
-  assert.ok(css.includes("@import url('./linux-ece-2026.css')"));
-  const linuxTheme = read('css/linux-ece-2026.css');
+  assert.equal(css.split('@import url(').length - 1, 3, 'Linux must import only three stylesheets');
+  assert.ok(!css.includes('linux-ece-2026.css'), 'Temporary Linux theme import must be removed');
+  const linuxTokens = read('css/tokens.css');
+  const linuxLayout = read('css/layout.css');
+  const linuxComponents = read('css/components.css');
   for (const color of ['#005157', '#40B7BF', '#FFA64D']) {
-    assert.ok(linuxTheme.includes(color), 'Missing ECE 2026 color ' + color);
+    assert.ok(linuxTokens.includes(color), 'Missing ECE 2026 color ' + color);
   }
-  assert.ok(!linuxTheme.includes('position:fixed!important'), 'Linux theme must not force fixed positioning');
+  assert.ok(linuxLayout.includes('ECE 2026'), 'Linux layout theme must be integrated');
+  assert.ok(linuxComponents.includes('ECE 2026'), 'Linux component theme must be integrated');
+  assert.ok(!existsSync(new URL('../css/linux-ece-2026.css', import.meta.url)), 'Temporary theme must be deleted');
   assert.ok(['css/tokens.css','css/layout.css','css/components.css'].reduce((n,p)=>n+read(p).length,0) > 10000);
   assert.ok(existsSync(new URL('../assets/favicon.svg', import.meta.url)));
   assert.ok(existsSync(new URL('../assets/ece-logo.jpg', import.meta.url)));
