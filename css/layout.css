@@ -162,3 +162,21 @@ textarea{
     font-size:10px;
     padding:5px 9px}
   }
+
+
+/* ECE 2026 — fond, navigation et structure Linux. */
+html body{font-family:"Funnel Sans",system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 86% -12%,rgba(64,183,191,.18),transparent 45%),linear-gradient(135deg,#06191B,#082529 65%,#062023);color:var(--fg)}
+html .sidebar{background:linear-gradient(180deg,#06282B,#051B1E);border-right-color:#235357}
+html .sidebar-inner{scrollbar-color:#35777B #08292D}
+html .top .eyebrow,html .eyebrow{color:#7DE4E5}
+html .status{background:rgba(2,44,47,.8);border-color:#347E80}
+html .nav{color:#C4DBD8}
+html .nav.on{background:#145359;border-color:#388E91;box-shadow:inset 3px 0 #55D3D7}
+html .nav:hover{background:#123B40}
+html .domain-card{background:#0B3034;border-color:#28575B}
+html .domain-card:hover,html .domain-card:focus-visible{background:#15464B;border-color:#59B7B7}
+html .domain-card.on{background:#155157;border-color:#65C9C7;box-shadow:inset 3px 0 #72E3D9}
+html .domain-number{background:#164A4E;color:#A4F5ED}
+html .domain-symbol{color:#91E5DE}
+html .side-label{color:#9FC8C4}
+html .status-floating{background:rgba(3,40,43,.96)}
